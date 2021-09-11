@@ -29,6 +29,7 @@
 */
 
 import UIKit
+import SDWebImage
 
 class AnnotatedPhotoCell: UICollectionViewCell {
   @IBOutlet private weak var containerView: UIView!
@@ -42,12 +43,15 @@ class AnnotatedPhotoCell: UICollectionViewCell {
     containerView.layer.masksToBounds = true
   }
   
-  var photo: Photo? {
+  var photo: HomeResponseElement? {
     didSet {
       if let photo = photo {
-        imageView.image = photo.image
-        captionLabel.text = photo.caption
-        commentLabel.text = photo.comment
+        print("in the sell")
+//        imageView.image =
+        imageView.sd_setImage(with: URL(string: photo.urls?.regular ?? ""))
+
+        captionLabel.text = "photo.id"
+        commentLabel.text = "photo.id"
       }
     }
   }
