@@ -34,8 +34,8 @@ import SDWebImage
 class AnnotatedPhotoCell: UICollectionViewCell {
   @IBOutlet private weak var containerView: UIView!
   @IBOutlet private weak var imageView: UIImageView!
-  @IBOutlet private weak var captionLabel: UILabel!
-  @IBOutlet private weak var commentLabel: UILabel!
+//  @IBOutlet private weak var captionLabel: UILabel!
+//  @IBOutlet private weak var commentLabel: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -46,12 +46,7 @@ class AnnotatedPhotoCell: UICollectionViewCell {
   var photo: HomeResponseElement? {
     didSet {
       if let photo = photo {
-        print("in the sell")
-//        imageView.image =
-        imageView.sd_setImage(with: URL(string: photo.urls?.regular ?? ""))
-
-        captionLabel.text = "photo.id"
-        commentLabel.text = "photo.id"
+        imageView.sd_setImage(with: URL(string: photo.urls?.thumb ?? ""))
       }
     }
   }
