@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183510D026F316A200C8315B /* HotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183510CF26F316A200C8315B /* HotViewController.swift */; };
+		183510D326F31D5400C8315B /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183510D226F31D5400C8315B /* ImageCell.swift */; };
 		9F47FA12A10C2F34510D2E3E /* Pods_UnSplash_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB5C4F80BA35ED40E4488D3 /* Pods_UnSplash_App.framework */; };
 		F41DEA7A26E4C12000215CFC /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DEA7926E4C12000215CFC /* PinterestLayout.swift */; };
 		F41DEA7D26E4C16800215CFC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DEA7C26E4C16800215CFC /* Photo.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		183510CF26F316A200C8315B /* HotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotViewController.swift; sourceTree = "<group>"; };
+		183510D226F31D5400C8315B /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		4F8D153D6F5DD2DA184A57AB /* Pods-UnSplash App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnSplash App.release.xcconfig"; path = "Target Support Files/Pods-UnSplash App/Pods-UnSplash App.release.xcconfig"; sourceTree = "<group>"; };
 		BD05F8EEFE8345BA6203C9FA /* Pods-UnSplash App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnSplash App.debug.xcconfig"; path = "Target Support Files/Pods-UnSplash App/Pods-UnSplash App.debug.xcconfig"; sourceTree = "<group>"; };
 		F41DEA7926E4C12000215CFC /* PinterestLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */,
+				183510D226F31D5400C8315B /* ImageCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				F45F770B26DBDBB3009CAAE1 /* HomeViewController.swift */,
+				183510CF26F316A200C8315B /* HotViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -341,10 +347,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183510D026F316A200C8315B /* HotViewController.swift in Sources */,
 				F4DF460126ECDD5D0011EE99 /* WebClient.swift in Sources */,
 				F4DF460526ECE4600011EE99 /* HomeResponse.swift in Sources */,
 				F4DF45FE26ECDD5D0011EE99 /* Reachability.swift in Sources */,
 				F41DEA7A26E4C12000215CFC /* PinterestLayout.swift in Sources */,
+				183510D326F31D5400C8315B /* ImageCell.swift in Sources */,
 				F4DF460026ECDD5D0011EE99 /* Path.swift in Sources */,
 				F4DF45FD26ECDD5D0011EE99 /* Result.swift in Sources */,
 				F4DF45F526ECDD430011EE99 /* CachedWebClient.swift in Sources */,
@@ -509,6 +517,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "UnSplash App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -528,6 +537,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "UnSplash App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

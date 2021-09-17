@@ -20,7 +20,7 @@ class HomeViewController: UICollectionViewController {
       }
         collectionView?.backgroundColor = .systemBackground
       collectionView?.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        loadHomePhotos()
+//        loadHomePhotos()
     }
     
     func loadHomePhotos() {
@@ -28,7 +28,7 @@ class HomeViewController: UICollectionViewController {
        let exampleDict: [String: Any] = [
                "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
                 "order_by": "latest",
-        "per_page":"30"
+                "per_page":"30"
            ]
        
        let parmas = ImageAPIController().HomeImages(params: exampleDict)
