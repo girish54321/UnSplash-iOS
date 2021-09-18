@@ -15,7 +15,7 @@ class ImageCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
     
-    func setImageCell(item:HomeResponseElement) {
+    func setImageCell(item:HomeImage) {
         imageItem.sd_setImage(with: URL(string: item.urls?.thumb ?? ""))
         title.text = item.altDescription ?? "NA"
         subTitle.text =  "NA"

@@ -43,11 +43,11 @@ class AnnotatedPhotoCell: UICollectionViewCell {
     containerView.layer.masksToBounds = true
   }
   
-  var photo: HomeResponseElement? {
-    didSet {
-      if let photo = photo {
-        imageView.sd_setImage(with: URL(string: photo.urls?.thumb ?? ""))
-      }
-    }
-  }
+//  var photo: HomeResponseElement? {
+//    didSet {
+//      if let photo = photo {
+//        imageView.sd_setImage(with: URL(string: photo.urls?.thumb ?? ""))
+//      }
+//    }
+//  }
 }

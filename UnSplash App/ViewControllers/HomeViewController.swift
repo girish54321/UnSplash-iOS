@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UICollectionViewController {
     var Oldphotos = Photo.allPhotos()
     static let sharedWebClient = WebClient.init(baseUrl: "https://api.unsplash.com/")
-    var newPhotos:[HomeResponseElement] = []
+    var newPhotos:[HomeImage] = []
     var apiTask: URLSessionDataTask!
     
     override func viewDidLoad() {
@@ -31,26 +31,26 @@ class HomeViewController: UICollectionViewController {
                 "per_page":"30"
            ]
        
-       let parmas = ImageAPIController().HomeImages(params: exampleDict)
+//       let parmas = ImageAPIController().HomeImages(params: exampleDict)
        
-       apiTask = HomeViewController.sharedWebClient.load(resource: parmas) {[weak self] response in
-           
-           guard let controller = self else { return }
-           
-           DispatchQueue.main.async {
-            print("response")
-            print(response.value?.count)
-            if let image = response.value {
-                print(response.value?[0].color)
-                self?.newPhotos = image
-                self?.collectionView.reloadData()
-               } else if let error = response.error {
-                   print("we have error")
-                print(error.localizedDescription)
-                   self!.view.makeToast(error.localizedDescription)
-               }
-           }
-       }
+//       apiTask = HomeViewController.sharedWebClient.load(resource: parmas) {[weak self] response in
+//
+//           guard let controller = self else { return }
+//
+//           DispatchQueue.main.async {
+//            print("response")
+//            print(response.value?.count)
+//            if let image = response.value {
+//                print(response.value?[0].color)
+//                self?.newPhotos = image
+//                self?.collectionView.reloadData()
+//               } else if let error = response.error {
+//                   print("we have error")
+//                print(error.localizedDescription)
+//                   self!.view.makeToast(error.localizedDescription)
+//               }
+//           }
+//       }
     }
   }
 
@@ -66,7 +66,7 @@ class HomeViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnnotatedPhotoCell", for: indexPath as IndexPath) as! AnnotatedPhotoCell
-        cell.photo = newPhotos[indexPath.item]
+//        cell.photo = newPhotos[indexPath.item]
       return cell
     }
     

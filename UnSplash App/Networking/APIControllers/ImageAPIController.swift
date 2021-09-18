@@ -25,13 +25,13 @@ struct ImageAPIController {
 //        return data
 //    }
     
-    func HomeImages(params: JSON) -> Resource<[HomeResponseElement], ErrorResponse> {
-        let data = Resource<[HomeResponseElement], ErrorResponse>(
-            jsonDecoder: JSONDecoder(),
-            path: "/photos",
-            method: RequestMethod.get,
-            params: params)
-        return data
-    }
+//    func HomeImages(params: JSON) -> Resource<[HomeResponseElement], ErrorResponse> {
+//        let data = Resource<[HomeResponseElement], ErrorResponse>(
+//            jsonDecoder: JSONDecoder(),
+//            path: "/photos",
+//            method: RequestMethod.get,
+//            params: params)
+//        return data
+//    }
     
 }
