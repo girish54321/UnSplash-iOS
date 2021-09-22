@@ -16,6 +16,7 @@
 		F41DEA8126E4C19500215CFC /* Photos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41DEA7F26E4C19500215CFC /* Photos.xcassets */; };
 		F41DEA8226E4C19500215CFC /* Photos.plist in Resources */ = {isa = PBXBuildFile; fileRef = F41DEA8026E4C19500215CFC /* Photos.plist */; };
 		F41DEA8526E4C20800215CFC /* AnnotatedPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */; };
+		F42B371C26FB57D000609593 /* imageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B371B26FB57D000609593 /* imageItem.swift */; };
 		F45F770826DBDBB3009CAAE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F770726DBDBB3009CAAE1 /* AppDelegate.swift */; };
 		F45F770A26DBDBB3009CAAE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F770926DBDBB3009CAAE1 /* SceneDelegate.swift */; };
 		F45F770C26DBDBB3009CAAE1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F770B26DBDBB3009CAAE1 /* HomeViewController.swift */; };
@@ -34,6 +35,7 @@
 		F4DF460126ECDD5D0011EE99 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF45FB26ECDD5D0011EE99 /* WebClient.swift */; };
 		F4DF460326ECDD6F0011EE99 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF460226ECDD6F0011EE99 /* APIError.swift */; };
 		F4DF460726ECE78C0011EE99 /* RootError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DF460626ECE78C0011EE99 /* RootError.swift */; };
+		F4E5E05626F5DEFF00C28AAA /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5E05526F5DEFF00C28AAA /* GridViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,7 @@
 		F41DEA7F26E4C19500215CFC /* Photos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Photos.xcassets; sourceTree = "<group>"; };
 		F41DEA8026E4C19500215CFC /* Photos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Photos.plist; sourceTree = "<group>"; };
 		F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedPhotoCell.swift; sourceTree = "<group>"; };
+		F42B371B26FB57D000609593 /* imageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageItem.swift; sourceTree = "<group>"; };
 		F45F770426DBDBB3009CAAE1 /* UnSplash App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UnSplash App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45F770726DBDBB3009CAAE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F45F770926DBDBB3009CAAE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		F4DF45FB26ECDD5D0011EE99 /* WebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 		F4DF460226ECDD6F0011EE99 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		F4DF460626ECE78C0011EE99 /* RootError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootError.swift; sourceTree = "<group>"; };
+		F4E5E05526F5DEFF00C28AAA /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		FCB5C4F80BA35ED40E4488D3 /* Pods_UnSplash_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnSplash_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -130,6 +134,7 @@
 			children = (
 				F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */,
 				183510D226F31D5400C8315B /* ImageCell.swift */,
+				F42B371B26FB57D000609593 /* imageItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 			children = (
 				F45F770B26DBDBB3009CAAE1 /* HomeViewController.swift */,
 				183510CF26F316A200C8315B /* HotViewController.swift */,
+				F4E5E05526F5DEFF00C28AAA /* GridViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				F4DF460126ECDD5D0011EE99 /* WebClient.swift in Sources */,
 				F4DF45FE26ECDD5D0011EE99 /* Reachability.swift in Sources */,
 				F41DEA7A26E4C12000215CFC /* PinterestLayout.swift in Sources */,
+				F4E5E05626F5DEFF00C28AAA /* GridViewController.swift in Sources */,
 				183510D326F31D5400C8315B /* ImageCell.swift in Sources */,
 				F4DF460026ECDD5D0011EE99 /* Path.swift in Sources */,
 				F4DF45FD26ECDD5D0011EE99 /* Result.swift in Sources */,
@@ -365,6 +372,7 @@
 				F45F770826DBDBB3009CAAE1 /* AppDelegate.swift in Sources */,
 				F4DF45FC26ECDD5D0011EE99 /* Resource.swift in Sources */,
 				F45F770A26DBDBB3009CAAE1 /* SceneDelegate.swift in Sources */,
+				F42B371C26FB57D000609593 /* imageItem.swift in Sources */,
 				1852428726F46DA30025E19E /* HomeImageRespone.swift in Sources */,
 				F41DEA7D26E4C16800215CFC /* Photo.swift in Sources */,
 				F4DF460326ECDD6F0011EE99 /* APIError.swift in Sources */,
