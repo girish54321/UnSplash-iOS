@@ -5,4 +5,10 @@
 //  Created by Girish Parate on 22/09/21.
 //
 
-import Foundation
+struct AppConst {
+
+    static let baseurl = "https://api.unsplash.com/"
+    static let photoUrl = "photos"
+}
+
+    
