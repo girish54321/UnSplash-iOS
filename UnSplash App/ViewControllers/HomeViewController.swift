@@ -53,8 +53,6 @@ class HomeViewController: UIViewController {
         layout.minimumInteritemSpacing = 4
         HomeImageList.setCollectionViewLayout(layout, animated: true)
        }
-    
-
 }
 
 //MARK : ListView code

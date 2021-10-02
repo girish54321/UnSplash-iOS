@@ -9,6 +9,7 @@ struct AppConst {
 
     static let baseurl = "https://api.unsplash.com/"
     static let photoUrl = "photos"
+    static let topics = "topics"
 }
 
     
