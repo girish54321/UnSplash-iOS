@@ -142,6 +142,5 @@ enum Username: String, Codable {
     case simonppt = "simonppt"
 }
 
-typealias TopicImageResponse = [TopicImageResponseElement]
 
 

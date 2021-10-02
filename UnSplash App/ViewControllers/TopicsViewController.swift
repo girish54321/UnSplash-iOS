@@ -18,13 +18,13 @@ class TopicsViewController: UIViewController {
         setUpTopicsList()
     }
     
-    func goToImageInfo(imageData:HomeImage) {
-//        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
-//            viewController.imageInfo = imageData
-//               if let navigator = navigationController {
-//                   navigator.pushViewController(viewController, animated: true)
-//               }
-//           }
+    func goToTopicImages(imageData:TopicResponseElement) {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TopicImagesViewController") as? TopicImagesViewController {
+            viewController.topicData = imageData
+               if let navigator = navigationController {
+                   navigator.pushViewController(viewController, animated: true)
+               }
+           }
         }
     
     private func setUpTopicsList() {
@@ -67,6 +67,15 @@ extension TopicsViewController: UICollectionViewDelegateFlowLayout {
     
         return CGSize(width: widthPerItem - 8, height: 240)
     }
+}
+
+// MARK: - On Tap
+extension TopicsViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    print("item at \(indexPath.section)/\(indexPath.item) tapped")
+      let item = topicsData[indexPath.item]
+      goToTopicImages(imageData: item)
+  }
 }
 
 // MARK: - Alamofire API CAll

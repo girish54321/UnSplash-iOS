@@ -189,11 +189,59 @@
                     <navigationItem key="navigationItem" title="Topics" id="m9b-go-BDX"/>
                     <connections>
                         <outlet property="TopicsList" destination="7oI-9H-M3A" id="uEx-5g-KBs"/>
+                        <segue destination="65B-jD-Ve3" kind="show" id="qC7-33-mjZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hx-TT-QvK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2492.753623188406" y="794.86607142857144"/>
+        </scene>
+        <!--Topic Name-->
+        <scene sceneID="S95-pQ-3ez">
+            <objects>
+                <viewController restorationIdentifier="TopicImagesViewController" storyboardIdentifier="TopicImagesViewController" id="65B-jD-Ve3" customClass="TopicImagesViewController" customModule="UnSplash_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kSb-At-akX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sIE-ps-zJF">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hWA-T4-JSL">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopicsImageItem" id="sIK-P1-Kim">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RLW-1z-YJh">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yTH-jh-XWa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sIE-ps-zJF" firstAttribute="top" secondItem="yTH-jh-XWa" secondAttribute="top" id="Tmb-lF-xOL"/>
+                            <constraint firstItem="yTH-jh-XWa" firstAttribute="trailing" secondItem="sIE-ps-zJF" secondAttribute="trailing" id="gK6-yx-Us5"/>
+                            <constraint firstItem="yTH-jh-XWa" firstAttribute="bottom" secondItem="sIE-ps-zJF" secondAttribute="bottom" id="jVQ-6R-3RP"/>
+                            <constraint firstItem="sIE-ps-zJF" firstAttribute="leading" secondItem="yTH-jh-XWa" secondAttribute="leading" id="vwz-hM-6Pb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Topic Name" id="5Er-Ob-aD5"/>
+                    <connections>
+                        <outlet property="TopicImages" destination="sIE-ps-zJF" id="1fk-8l-tQz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XaI-aC-4u9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2493" y="1473"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SXH-xD-wXi">
