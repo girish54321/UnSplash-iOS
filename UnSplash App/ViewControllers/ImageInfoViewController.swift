@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 import SDDownloadManager
+import FittedSheets
 
 class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentInteractionControllerDelegate {
     
@@ -35,6 +36,9 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
             updateView();
 //        self.saveButton.set(true, animated:true)
             hideDwonlodButton()
+        
+       
+
     }
     
     func hideDwonlodButton(){
@@ -54,7 +58,7 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
             infoImageView.sd_setImage(with: localImageUrl)
         }else{
             print("form net")
-            infoImageView.sd_setImage(with: URL(string: imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
+            infoImageView?.sd_setImage(with: URL(string: imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
         }
     }
     
@@ -67,7 +71,7 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         } catch {
         print("Error loading image : \(error)")
         }
-        let activityController = UIActivityViewController(activityItems: [imageData,URL(string: "www.google.com")], applicationActivities: nil)
+        let activityController = UIActivityViewController(activityItems: [imageData!,], applicationActivities: nil)
 
         activityController.completionWithItemsHandler = { (nil, completed, _, error) in
             if completed {

@@ -10,6 +10,7 @@ target 'UnSplash App' do
   pod 'Alamofire'
   pod 'AlamofireImage', '~> 4.1'
   pod 'SDDownloadManager'
+  pod 'FittedSheets'
 
   # Pods for UnSplash App
 

@@ -19,11 +19,11 @@ class GridViewController: UIViewController {
     
     private func setUpCollectionView() {
          /// 1
-         gridCollectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
+         gridCollectionView?.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
 
          /// 2
-         gridCollectionView.delegate = self
-         gridCollectionView.dataSource = self
+         gridCollectionView?.delegate = self
+         gridCollectionView?.dataSource = self
 
          /// 3
          let layout = UICollectionViewFlowLayout()
@@ -34,7 +34,7 @@ class GridViewController: UIViewController {
          layout.minimumInteritemSpacing = 4
 
          /// 6
-         gridCollectionView.setCollectionViewLayout(layout, animated: true)
+         gridCollectionView?.setCollectionViewLayout(layout, animated: true)
        }
 }
 

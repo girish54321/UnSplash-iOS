@@ -29,8 +29,7 @@ class HomeViewController: UIViewController {
                    isPageRefreshing = true
                    pageNumber = pageNumber + 1
                    print("on end API")
-                   //TODO
-//                   getHotPhotos(page: pageNumber)
+                   getHotPhotos(page: pageNumber)
                }
            }
     }
