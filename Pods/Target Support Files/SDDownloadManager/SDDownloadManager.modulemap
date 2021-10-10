@@ -1,0 +1,6 @@
+framework module SDDownloadManager {
+  umbrella header "SDDownloadManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

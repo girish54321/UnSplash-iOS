@@ -63,7 +63,7 @@ extension HotViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hotImageItem", for: indexPath as IndexPath) as! ImageItem
         let item = newPhotos[indexPath.row]
-        cell.setimages(item: item)
+        cell.setimages(item: item,isFile:false)
         return cell
     }
 }

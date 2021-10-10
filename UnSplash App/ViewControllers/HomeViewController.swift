@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     var newPhotos:[HomeImage] = []
     var pageNumber : Int = 1
     var isPageRefreshing : Bool = false
-    
+
     override func viewDidLoad() {
       super.viewDidLoad()
         title="Home"
@@ -29,7 +29,8 @@ class HomeViewController: UIViewController {
                    isPageRefreshing = true
                    pageNumber = pageNumber + 1
                    print("on end API")
-                   getHotPhotos(page: pageNumber)
+                   //TODO
+//                   getHotPhotos(page: pageNumber)
                }
            }
     }
@@ -63,7 +64,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeImageItem", for: indexPath as IndexPath) as! ImageItem
         let item = newPhotos[indexPath.row]
-        cell.setimages(item: item)
+        cell.setimages(item: item,isFile:false)
         return cell
     }
 }

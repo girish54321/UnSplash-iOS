@@ -8,6 +8,8 @@ target 'UnSplash App' do
   pod 'Toast-Swift', '~> 5.0.1'
   pod 'PaginatedTableView'
   pod 'Alamofire'
+  pod 'AlamofireImage', '~> 4.1'
+  pod 'SDDownloadManager'
 
   # Pods for UnSplash App
 

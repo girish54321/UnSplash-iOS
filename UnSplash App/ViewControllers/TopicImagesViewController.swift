@@ -35,10 +35,22 @@ class TopicImagesViewController: UIViewController {
         
         // Load Demo Data to CollectionView Cells
         loadData()
-        getPhotos(page: pageNumber)
+       
         setUpList()
         // Register Header
         TopicImages.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
+    }
+    
+    // MARK: On end
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if(self.TopicImages.contentOffset.y >= (self.TopicImages.contentSize.height - self.TopicImages.bounds.size.height)) {
+               if !isPageRefreshing {
+                   isPageRefreshing = true
+                   pageNumber = pageNumber + 1
+                   print("on end API")
+                   getPhotos(page: pageNumber)
+               }
+           }
     }
     
     private func setUpList() {
@@ -87,6 +99,16 @@ class TopicImagesViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Name", style: .plain, target: nil, action: nil)
         self.title = topicData.title
     }
+    
+    func goToImageInfo(imageData:HomeImage) {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
+            viewController.imageInfo = imageData
+               if let navigator = navigationController {
+                   navigator.pushViewController(viewController, animated: true)
+               }
+           }
+        }
+    
 }
 
 extension TopicImagesViewController: UICollectionViewDataSource {
@@ -109,7 +131,7 @@ extension TopicImagesViewController: UICollectionViewDataSource {
 //        cell.backgroundColor = itemsArray[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopicsImageItem", for: indexPath as IndexPath) as! ImageItem
         let item = newPhotos[indexPath.row]
-        cell.setimages(item: item)
+        cell.setimages(item: item,isFile:false)
         return cell
     }
 }
@@ -162,24 +184,12 @@ extension TopicImagesViewController {
   }
 }
 
-// MARK: - Alamofire API CAll
-//extension TopicImagesViewController {
-//    func getPhotos(page:Int) {
-//    let parameters: [String: Any] = [
-//            "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
-//             "page":String(page),
-//             "per_page":"20"
-//        ]
-//        AF.request(AppConst.baseurl+AppConst.topics+"/"+topicData.id+"/"+AppConst.photoUrl,method: .get,parameters: parameters).validate().responseDecodable(of: [HomeImage].self) { (response) in
-//      guard let data = response.value else {
-//        print("Error")
-//          self.isPageRefreshing = false
-//        return
-//      }
-//        self.newPhotos.append(contentsOf: data)
-//        self.TopicImages.reloadData()
-//        self.isPageRefreshing = false
-//    }
-//  }
-//}
+// MARK: - On Tap
+extension TopicImagesViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    print("item at \(indexPath.section)/\(indexPath.item) tapped")
+      let item = newPhotos[indexPath.item]
+      goToImageInfo(imageData: item)
+  }
+}
 
