@@ -13,7 +13,7 @@ import FittedSheets
 
 class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentInteractionControllerDelegate {
     
-    var imageInfo:HomeImage! 
+    var imageInfo:HomeImage!
     @IBOutlet weak var infoImageView: UIImageView!
     var fileData: NSMutableData = NSMutableData()
     var dataTask: URLSessionDataTask?
@@ -29,16 +29,13 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         maximumActiveDownloads: 4,
         imageCache: AutoPurgingImageCache()
     )
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            updateView();
-//        self.saveButton.set(true, animated:true)
-            hideDwonlodButton()
-        
-       
-
+        updateView();
+        //        self.saveButton.set(true, animated:true)
+        hideDwonlodButton()
     }
     
     func hideDwonlodButton(){
@@ -66,13 +63,13 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         // image to share
         var imageData : UIImage!;
         do {
-        let imageUrl = try Data(contentsOf: localImageUrl)
-        imageData =  UIImage(data: imageUrl)
+            let imageUrl = try Data(contentsOf: localImageUrl)
+            imageData =  UIImage(data: imageUrl)
         } catch {
-        print("Error loading image : \(error)")
+            print("Error loading image : \(error)")
         }
         let activityController = UIActivityViewController(activityItems: [imageData!,], applicationActivities: nil)
-
+        
         activityController.completionWithItemsHandler = { (nil, completed, _, error) in
             if completed {
                 print("completed")
@@ -83,57 +80,78 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         present(activityController, animated: true) {
             print("presented")
         }
-//        let activityController = UIActivityViewController(activityItems: ["stringWithLink"], applicationActivities: nil)
-//
-//        activityController.completionWithItemsHandler = { (nil, completed, _, error) in
-//            if completed {
-//                print("completed")
-//            } else {
-//                print("cancled")
-//            }
-//        }
-//        present(activityController, animated: true) {
-//            print("presented")
-//        }
-//        guard let url = Bundle.main.url(forResource: "img", withExtension: "pdf") else { return }
-//        guard let url = localImageUrl else {return}
-//        let controller = UIDocumentInteractionController(url: url)
-//        controller.delegate = self
-//        controller.presentPreview(animated: true)
+        //        let activityController = UIActivityViewController(activityItems: ["stringWithLink"], applicationActivities: nil)
+        //
+        //        activityController.completionWithItemsHandler = { (nil, completed, _, error) in
+        //            if completed {
+        //                print("completed")
+        //            } else {
+        //                print("cancled")
+        //            }
+        //        }
+        //        present(activityController, animated: true) {
+        //            print("presented")
+        //        }
+        //        guard let url = Bundle.main.url(forResource: "img", withExtension: "pdf") else { return }
+        //        guard let url = localImageUrl else {return}
+        //        let controller = UIDocumentInteractionController(url: url)
+        //        controller.delegate = self
+        //        controller.presentPreview(animated: true)
     }
     
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         return self
     }
     
+    func showModal() {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DwonlodsOpstionViewController") as? DwonlodsOpstionViewController {
+           
+               if let navigator = navigationController {
+//                   navigator.pushViewController(viewController, animated: true)
+                   if #available(iOS 15.0, *) {
+                       if let sheet = viewController.presentationController as? UISheetPresentationController{
+                           sheet.detents = [.medium(), .large()]
+                           sheet.prefersGrabberVisible = false
+                       }
+                       present(viewController, animated: true, completion: nil)
+                   } else {
+                       navigator.pushViewController(viewController, animated: true)
+                   }
+               }
+            
+           }
+    }
+    
     @IBAction func downlodButtonOnClick(_ sender: Any) {
         print("stat")
+        showModal()
+        return
         if(localFile){
             shareImage()
         }else{
-        let url =  imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"
-        savePdf(urlString: url, fileName: "yos")
+            let url =  imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"
+            savePdf(urlString: url, fileName: "yos")
         }
     }
-    }
-    
-    func savePdf(urlString:String, fileName:String) {
-        DispatchQueue.main.async {
-            let url = URL(string: urlString)
-            let pdfData = try? Data.init(contentsOf: url!)
-            let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
-            let pdfNameFromUrl = "\(UUID().uuidString).png"
-            let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
-            do {
-                try pdfData?.write(to: actualPath, options: .atomic)
-                print("pdf successfully saved!")
-                print(actualPath)
-            } catch {
-                print("Pdf could not be saved")
-            }
-        }
-    }
+}
 
-   
+func savePdf(urlString:String, fileName:String) {
+    DispatchQueue.main.async {
+        let url = URL(string: urlString)
+        let pdfData = try? Data.init(contentsOf: url!)
+        let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+        let pdfNameFromUrl = "\(UUID().uuidString).png"
+        let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
+        do {
+            try pdfData?.write(to: actualPath, options: .atomic)
+            print("pdf successfully saved!")
+            print(actualPath)
+        } catch {
+            print("Pdf could not be saved")
+        }
+    }
+}
+
+
 
 

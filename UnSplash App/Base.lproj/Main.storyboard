@@ -89,7 +89,6 @@
                     <navigationItem key="navigationItem" title="Hot" id="Gfu-Ec-ccn"/>
                     <connections>
                         <outlet property="imageList" destination="AuX-am-nAW" id="zSk-wK-MYx"/>
-                        <segue destination="kvw-EL-5Tj" kind="show" id="f7z-Gy-b5I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mdr-26-wZj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -189,7 +188,6 @@
                     <navigationItem key="navigationItem" title="Topics" id="m9b-go-BDX"/>
                     <connections>
                         <outlet property="TopicsList" destination="7oI-9H-M3A" id="uEx-5g-KBs"/>
-                        <segue destination="65B-jD-Ve3" kind="show" id="qC7-33-mjZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hx-TT-QvK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -205,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sIE-ps-zJF">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hWA-T4-JSL">
                                     <size key="itemSize" width="128" height="128"/>
@@ -271,7 +269,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XaI-aC-4u9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2493" y="1473"/>
+            <point key="canvasLocation" x="897" y="1503"/>
+        </scene>
+        <!--Dwonlods Opstion View Controller-->
+        <scene sceneID="T29-kt-kdB">
+            <objects>
+                <viewController restorationIdentifier="DwonlodsOpstionViewController" storyboardIdentifier="DwonlodsOpstionViewController" id="cjw-wc-n0q" customClass="DwonlodsOpstionViewController" customModule="UnSplash_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zMi-Kq-E8h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8yd-sd-hA2">
+                                <rect key="frame" x="184" y="86" width="49" height="31"/>
+                            </switch>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XDC-uM-i13"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8yd-sd-hA2" firstAttribute="top" secondItem="XDC-uM-i13" secondAttribute="top" constant="42" id="Eg9-7R-d2l"/>
+                            <constraint firstItem="XDC-uM-i13" firstAttribute="trailing" secondItem="8yd-sd-hA2" secondAttribute="trailing" constant="183" id="SNA-8C-pvD"/>
+                            <constraint firstItem="8yd-sd-hA2" firstAttribute="leading" secondItem="XDC-uM-i13" secondAttribute="leading" constant="184" id="gYt-Pe-mK4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p2j-6M-cz1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1761" y="1503"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SXH-xD-wXi">
@@ -477,7 +500,6 @@
                     <navigationItem key="navigationItem" title="Home" id="2Gh-bP-t43"/>
                     <connections>
                         <outlet property="HomeImageList" destination="8Wr-DT-VSj" id="Oia-Kz-gpo"/>
-                        <segue destination="kvw-EL-5Tj" kind="show" id="08d-JF-jj0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRP-pM-1bK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -493,7 +515,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02" translatesAutoresizingMaskIntoConstraints="NO" id="Wjy-yM-K8K">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
@@ -520,7 +542,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ll6-OG-tGn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-67" y="1635"/>
+            <point key="canvasLocation" x="-42" y="1503"/>
         </scene>
         <!--Hot-->
         <scene sceneID="nBD-Li-Bek">
@@ -580,9 +602,6 @@
             <point key="canvasLocation" x="3239" y="795"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="f7z-Gy-b5I"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="02" width="320" height="213.5"/>
         <image name="flame" catalog="system" width="108" height="128"/>
