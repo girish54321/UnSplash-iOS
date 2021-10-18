@@ -97,21 +97,27 @@ extension HomeViewController: UICollectionViewDelegate {
 // MARK: - Alamofire API CAll
 extension HomeViewController {
     func getHotPhotos(page:Int) {
-    let parameters: [String: Any] = [
+        if(newPhotos.isEmpty){
+            self.view.showBlurLoader()
+        }
+        
+        let parameters: [String: Any] = [
             "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
-             "order_by": "latest",
-             "page":String(page),
-             "per_page":"20"
+            "order_by": "latest",
+            "page":String(page),
+            "per_page":"20"
         ]
-    AF.request(AppConst.baseurl+AppConst.photoUrl,method: .get,parameters: parameters).validate().responseDecodable(of: [HomeImage].self) { (response) in
-      guard let data = response.value else {
-        print("Error")
-          self.isPageRefreshing = false
-        return
-      }
-        self.newPhotos.append(contentsOf: data)
-        self.HomeImageList.reloadData()
-        self.isPageRefreshing = false
+        AF.request(AppConst.baseurl+AppConst.photoUrl,method: .get,parameters: parameters).validate().responseDecodable(of: [HomeImage].self) { (response) in
+            guard let data = response.value else {
+                print("Error")
+                self.view.removeBluerLoader()
+                self.isPageRefreshing = false
+                return
+            }
+            self.newPhotos.append(contentsOf: data)
+            self.HomeImageList.reloadData()
+            self.view.removeBluerLoader()
+            self.isPageRefreshing = false
+        }
     }
-  }
 }

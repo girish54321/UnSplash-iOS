@@ -36,6 +36,12 @@ extension DwonlodsOpstionViewController: UITableViewDataSource, UITableViewDeleg
         return op.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let video = op[indexPath.row]
+        print("row: \(indexPath.row)")
+        self.view.showBlurLoader()
+        DownloadHelper.savePdf(urlString: video.url, fileName: "", vc: self)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let video = op[indexPath.row]
@@ -43,4 +49,5 @@ extension DwonlodsOpstionViewController: UITableViewDataSource, UITableViewDeleg
         cell.updateTitle(item: video)
         return cell
     }
+    
 }

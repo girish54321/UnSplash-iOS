@@ -123,14 +123,11 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     }
     
     @IBAction func downlodButtonOnClick(_ sender: Any) {
-        print("stat")
-        showModal()
-        return
         if(localFile){
             shareImage()
         }else{
             let url =  imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"
-            savePdf(urlString: url, fileName: "yos")
+            showModal()
         }
     }
 }

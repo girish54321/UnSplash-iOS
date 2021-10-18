@@ -17,7 +17,6 @@
 		F41DEA8526E4C20800215CFC /* AnnotatedPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */; };
 		F42B371C26FB57D000609593 /* imageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B371B26FB57D000609593 /* imageItem.swift */; };
 		F42B371F26FB6B4300609593 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B371E26FB6B4300609593 /* AppConst.swift */; };
-		F42CA884270DEEFD00B8067A /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CA883270DEEFD00B8067A /* FileDownloader.swift */; };
 		F453BBFA27030D80006EF654 /* ImageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F453BBF927030D80006EF654 /* ImageInfoViewController.swift */; };
 		F45D8819270867E5002CD360 /* TopicImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D8818270867E5002CD360 /* TopicImageResponse.swift */; };
 		F45D881B27086AA1002CD360 /* TopicImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D881A27086AA1002CD360 /* TopicImagesViewController.swift */; };
@@ -31,6 +30,9 @@
 		F45F771426DBDBB3009CAAE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45F771226DBDBB3009CAAE1 /* LaunchScreen.storyboard */; };
 		F4674708271D89A00016058D /* DownlodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4674707271D89A00016058D /* DownlodCell.swift */; };
 		F467470A271D94020016058D /* DownlodClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4674709271D94020016058D /* DownlodClass.swift */; };
+		F467470C271DA0EA0016058D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F467470B271DA0EA0016058D /* Alert.swift */; };
+		F467470E271DA27E0016058D /* DownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F467470D271DA27E0016058D /* DownloadHelper.swift */; };
+		F4674710271DAB8C0016058D /* BlurLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F467470F271DAB8C0016058D /* BlurLoader.swift */; };
 		F47CC70F2712B032008C5C91 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CC70E2712B032008C5C91 /* SavedViewController.swift */; };
 		F48E06FA2704275A00DA4D51 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E06F92704275A00DA4D51 /* TopicsViewController.swift */; };
 		F48E06FC2704295200DA4D51 /* TopicImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E06FB2704295200DA4D51 /* TopicImageItem.swift */; };
@@ -63,7 +65,6 @@
 		F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedPhotoCell.swift; sourceTree = "<group>"; };
 		F42B371B26FB57D000609593 /* imageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageItem.swift; sourceTree = "<group>"; };
 		F42B371E26FB6B4300609593 /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
-		F42CA883270DEEFD00B8067A /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		F453BBF927030D80006EF654 /* ImageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoViewController.swift; sourceTree = "<group>"; };
 		F45D8818270867E5002CD360 /* TopicImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicImageResponse.swift; sourceTree = "<group>"; };
 		F45D881A27086AA1002CD360 /* TopicImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicImagesViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +80,9 @@
 		F45F771526DBDBB3009CAAE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4674707271D89A00016058D /* DownlodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownlodCell.swift; sourceTree = "<group>"; };
 		F4674709271D94020016058D /* DownlodClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownlodClass.swift; sourceTree = "<group>"; };
+		F467470B271DA0EA0016058D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		F467470D271DA27E0016058D /* DownloadHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadHelper.swift; sourceTree = "<group>"; };
+		F467470F271DAB8C0016058D /* BlurLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurLoader.swift; sourceTree = "<group>"; };
 		F47CC70E2712B032008C5C91 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		F48E06F92704275A00DA4D51 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		F48E06FB2704295200DA4D51 /* TopicImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicImageItem.swift; sourceTree = "<group>"; };
@@ -172,7 +176,9 @@
 			isa = PBXGroup;
 			children = (
 				F42B371E26FB6B4300609593 /* AppConst.swift */,
-				F42CA883270DEEFD00B8067A /* FileDownloader.swift */,
+				F467470B271DA0EA0016058D /* Alert.swift */,
+				F467470D271DA27E0016058D /* DownloadHelper.swift */,
+				F467470F271DAB8C0016058D /* BlurLoader.swift */,
 			);
 			path = AppConst;
 			sourceTree = "<group>";
@@ -415,14 +421,17 @@
 				F4DF45FF26ECDD5D0011EE99 /* WebError.swift in Sources */,
 				F45D8819270867E5002CD360 /* TopicImageResponse.swift in Sources */,
 				F4674708271D89A00016058D /* DownlodCell.swift in Sources */,
+				F4674710271DAB8C0016058D /* BlurLoader.swift in Sources */,
 				F48E06FE27042B0E00DA4D51 /* TopicResponse.swift in Sources */,
 				F4DF45F426ECDD430011EE99 /* CacheItem.swift in Sources */,
 				F45D881F27086D14002CD360 /* CollectionViewFlowLayout.swift in Sources */,
+				F467470C271DA0EA0016058D /* Alert.swift in Sources */,
 				F4DF460726ECE78C0011EE99 /* RootError.swift in Sources */,
 				F4DF45EC26ECDD040011EE99 /* ImageAPIController.swift in Sources */,
 				F41DEA8526E4C20800215CFC /* AnnotatedPhotoCell.swift in Sources */,
 				F45F770C26DBDBB3009CAAE1 /* HomeViewController.swift in Sources */,
 				F45F770826DBDBB3009CAAE1 /* AppDelegate.swift in Sources */,
+				F467470E271DA27E0016058D /* DownloadHelper.swift in Sources */,
 				F45D881B27086AA1002CD360 /* TopicImagesViewController.swift in Sources */,
 				F48E06FA2704275A00DA4D51 /* TopicsViewController.swift in Sources */,
 				F4DF45FC26ECDD5D0011EE99 /* Resource.swift in Sources */,
@@ -433,7 +442,6 @@
 				F467470A271D94020016058D /* DownlodClass.swift in Sources */,
 				F41DEA7D26E4C16800215CFC /* Photo.swift in Sources */,
 				F47CC70F2712B032008C5C91 /* SavedViewController.swift in Sources */,
-				F42CA884270DEEFD00B8067A /* FileDownloader.swift in Sources */,
 				F4DF460326ECDD6F0011EE99 /* APIError.swift in Sources */,
 				F499518727131F500025CD37 /* DwonlodsOpstionViewController.swift in Sources */,
 			);

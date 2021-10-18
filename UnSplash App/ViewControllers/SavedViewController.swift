@@ -31,7 +31,7 @@ class SavedViewController: UIViewController {
         print(directoryContents)
             savedImages.removeAll()
             savedImages = directoryContents
-            print(savedImages[0])
+           
             savedImageList.reloadData()
             stopRefresher()
        
