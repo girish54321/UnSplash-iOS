@@ -29,6 +29,8 @@
 		F45F770F26DBDBB3009CAAE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45F770D26DBDBB3009CAAE1 /* Main.storyboard */; };
 		F45F771126DBDBB3009CAAE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F45F771026DBDBB3009CAAE1 /* Assets.xcassets */; };
 		F45F771426DBDBB3009CAAE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45F771226DBDBB3009CAAE1 /* LaunchScreen.storyboard */; };
+		F4674708271D89A00016058D /* DownlodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4674707271D89A00016058D /* DownlodCell.swift */; };
+		F467470A271D94020016058D /* DownlodClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4674709271D94020016058D /* DownlodClass.swift */; };
 		F47CC70F2712B032008C5C91 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47CC70E2712B032008C5C91 /* SavedViewController.swift */; };
 		F48E06FA2704275A00DA4D51 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E06F92704275A00DA4D51 /* TopicsViewController.swift */; };
 		F48E06FC2704295200DA4D51 /* TopicImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E06FB2704295200DA4D51 /* TopicImageItem.swift */; };
@@ -75,6 +77,8 @@
 		F45F771026DBDBB3009CAAE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F45F771326DBDBB3009CAAE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F45F771526DBDBB3009CAAE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4674707271D89A00016058D /* DownlodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownlodCell.swift; sourceTree = "<group>"; };
+		F4674709271D94020016058D /* DownlodClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownlodClass.swift; sourceTree = "<group>"; };
 		F47CC70E2712B032008C5C91 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		F48E06F92704275A00DA4D51 /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		F48E06FB2704295200DA4D51 /* TopicImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicImageItem.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				F48E06FB2704295200DA4D51 /* TopicImageItem.swift */,
 				F45D881C27086CB7002CD360 /* StretchyCollectionHeaderView.swift */,
 				F45D881E27086D14002CD360 /* CollectionViewFlowLayout.swift */,
+				F4674707271D89A00016058D /* DownlodCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				1852428626F46DA30025E19E /* HomeImageRespone.swift */,
 				F48E06FD27042B0E00DA4D51 /* TopicResponse.swift */,
 				F45D8818270867E5002CD360 /* TopicImageResponse.swift */,
+				F4674709271D94020016058D /* DownlodClass.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 				F42B371F26FB6B4300609593 /* AppConst.swift in Sources */,
 				F4DF45FF26ECDD5D0011EE99 /* WebError.swift in Sources */,
 				F45D8819270867E5002CD360 /* TopicImageResponse.swift in Sources */,
+				F4674708271D89A00016058D /* DownlodCell.swift in Sources */,
 				F48E06FE27042B0E00DA4D51 /* TopicResponse.swift in Sources */,
 				F4DF45F426ECDD430011EE99 /* CacheItem.swift in Sources */,
 				F45D881F27086D14002CD360 /* CollectionViewFlowLayout.swift in Sources */,
@@ -423,6 +430,7 @@
 				F45F770A26DBDBB3009CAAE1 /* SceneDelegate.swift in Sources */,
 				F42B371C26FB57D000609593 /* imageItem.swift in Sources */,
 				1852428726F46DA30025E19E /* HomeImageRespone.swift in Sources */,
+				F467470A271D94020016058D /* DownlodClass.swift in Sources */,
 				F41DEA7D26E4C16800215CFC /* Photo.swift in Sources */,
 				F47CC70F2712B032008C5C91 /* SavedViewController.swift in Sources */,
 				F42CA884270DEEFD00B8067A /* FileDownloader.swift in Sources */,

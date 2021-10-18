@@ -8,41 +8,39 @@
 import UIKit
 
 class DwonlodsOpstionViewController: UIViewController {
-
-    let op :[String] = ["12","23","45","45"];
     
+    var op :[DownlodClass] = []
     let titleForPage = "Hello Work"
-    
-    var isCompleted :((_ selectedOption: String) -> ())? = nil
-    func didSometingWithCode(completed: @escaping(_
-        selectedOption: String) -> ()){
-        self.isCompleted = completed
-        
-    }
-    
+    @IBOutlet weak var dowlodList: UITableView!
+    var url: Urls!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        dowlodList.delegate = self
+        dowlodList.dataSource = self
+        CreateArrayOfurls()
     }
     
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return op.count
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-//        cell.textLabel?.text = op[indexPath.row]
-//        return cell
-//    }
-//
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let complted = isCompleted{
-//            complted(op[indexPath.row])
-//        }
+    func CreateArrayOfurls() {
+        let url1 = DownlodClass(title: "Small", subTitle: "Smallest size", url: url.small ?? "", size: "1MB")
+        let url2 = DownlodClass(title: "Regular", subTitle: "For mobile wallpaper", url: url.regular ?? "", size: "3MB")
+        let url3 = DownlodClass(title: "Full", subTitle: "For Desktop", url: url.full ?? "", size: "6MB")
+        let url4 = DownlodClass(title: "Raw", subTitle: "Original file", url: url.raw ?? "", size: "10MB+")
+        op = [url1,url2,url3,url4]
     }
+    
+}
 
+extension DwonlodsOpstionViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return op.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let video = op[indexPath.row]
+        let cell = dowlodList.dequeueReusableCell(withIdentifier: "DwonlodCell") as! DwonlodCell
+        cell.updateTitle(item: video)
+        return cell
+    }
+}

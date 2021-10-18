@@ -105,7 +105,7 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     
     func showModal() {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DwonlodsOpstionViewController") as? DwonlodsOpstionViewController {
-           
+            viewController.url = imageInfo.urls
                if let navigator = navigationController {
 //                   navigator.pushViewController(viewController, animated: true)
                    if #available(iOS 15.0, *) {
