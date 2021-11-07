@@ -81,6 +81,9 @@ extension TopicsViewController: UICollectionViewDelegate {
 // MARK: - Alamofire API CAll
 extension TopicsViewController {
     func getTopicsPhotos(page:Int) {
+    if(topicsData.isEmpty){
+    self.view.showBlurLoader()
+    }
     let parameters: [String: Any] = [
             "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
         ]
@@ -93,6 +96,7 @@ extension TopicsViewController {
       }
           print("set data")
         self.topicsData.append(contentsOf: data)
+        self.view.removeBluerLoader()
         self.TopicsList.reloadData()
     }
   }

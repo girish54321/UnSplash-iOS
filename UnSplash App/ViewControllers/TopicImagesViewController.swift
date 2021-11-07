@@ -166,6 +166,9 @@ extension TopicImagesViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Alamofire API CAll
 extension TopicImagesViewController {
     func getPhotos(page:Int) {
+    if(newPhotos.isEmpty){
+    self.view.showBlurLoader()
+    }
     let parameters: [String: Any] = [
             "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
              "page":String(page),
@@ -174,10 +177,12 @@ extension TopicImagesViewController {
         AF.request("https://api.unsplash.com/topics/"+self.topicData.id!+"/photos",method: .get,parameters: parameters).validate().responseDecodable(of:[HomeImage].self) { (response) in
       guard let data = response.value else {
         print("Error")
+          self.view.removeBluerLoader()
           self.isPageRefreshing = false
         return
       }
         self.newPhotos.append(contentsOf: data)
+        self.view.removeBluerLoader()
         self.TopicImages.reloadData()
         self.isPageRefreshing = false
     }

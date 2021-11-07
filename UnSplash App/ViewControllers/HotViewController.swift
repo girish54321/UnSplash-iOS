@@ -97,6 +97,10 @@ extension HotViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Alamofire API CAll
 extension HotViewController {
     func getHotPhotos(page:Int) {
+    if(newPhotos.isEmpty){
+    self.view.showBlurLoader()
+    }
+        
     let parameters: [String: Any] = [
             "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
              "order_by": "popular",
@@ -107,11 +111,13 @@ extension HotViewController {
       guard let data = response.value else {
         print(response)
         print("Error")
+          self.view.removeBluerLoader()
           self.isPageRefreshing = false
         return
       }
         self.newPhotos.append(contentsOf: data)
         self.imageList.reloadData()
+        self.view.removeBluerLoader()
         self.isPageRefreshing = false
     }
   }
