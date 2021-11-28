@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct UIHelper {
-//    MARK :Context Menus
+//    MARK- :Context Menus
     func configureContextMenu(index: Int) -> UIContextMenuConfiguration{
         let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
             
@@ -23,5 +23,15 @@ struct UIHelper {
             return UIMenu(title: "Options", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [edit,share])
         }
         return context
+    }
+    
+//    MARK:- Search Button (Tab bar)
+    static func showSearchButton(action: Selector ,navigationItem:UINavigationItem){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "magnifyingglass"),
+            style: .done,
+            target: self,
+            action: action
+        )
     }
 }
