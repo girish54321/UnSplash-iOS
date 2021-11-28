@@ -14,30 +14,30 @@ struct TopicResponseElement: Decodable {
     let onlySubmissionsAfter: String?
     let featured: Bool?
     let totalPhotos: Int?
-//    let currentUserContributions: [String]?
-//    let totalCurrentUserSubmissions: String?
-//    let links: TopicResponseLinks?
+    //    let currentUserContributions: [String]?
+    //    let totalCurrentUserSubmissions: String?
+    //    let links: TopicResponseLinks?
     let status: TopicResponseStatus?
-//    let owners: [User]?
+    //    let owners: [User]?
     let coverPhoto: CoverPhoto?
-//    let previewPhotos: [PreviewPhoto]?
-
+    //    let previewPhotos: [PreviewPhoto]?
+    
     enum CodingKeys: String, CodingKey {
         case id, slug, title
         case topicResponseDescription = "description"
-//        case publishedAt = "published_at"
+        //        case publishedAt = "published_at"
         case updatedAt = "updated_at"
         case startsAt = "starts_at"
         case endsAt = "ends_at"
         case onlySubmissionsAfter = "only_submissions_after"
         case featured = "featured"
         case totalPhotos = "total_photos"
-//        case currentUserContributions = "current_user_contributions"
-//        case totalCurrentUserSubmissions = "total_current_user_submissions"
-//        case links, status, owners
+        //        case currentUserContributions = "current_user_contributions"
+        //        case totalCurrentUserSubmissions = "total_current_user_submissions"
+        //        case links, status, owners
         case status
         case coverPhoto = "cover_photo"
-//        case previewPhotos = "preview_photos"
+        //        case previewPhotos = "preview_photos"
     }
 }
 
@@ -51,14 +51,14 @@ struct CoverPhoto: Decodable {
     let altDescription: String?
     let urls: Urls?
     let links: CoverPhotoLinks?
-//    let categories: [String]?
+    //    let categories: [String]?
     let likes: Int?
     let likedByUser: Bool?
     let currentUserCollections: [String]?
     let sponsorship: String?
-//    let topicSubmissions: [String: TopicSubmission]?
+    //    let topicSubmissions: [String: TopicSubmission]?
     let user: User?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case createdAt = "created_at"
@@ -72,7 +72,7 @@ struct CoverPhoto: Decodable {
         case likedByUser = "liked_by_user"
         case currentUserCollections = "current_user_collections"
         case sponsorship = "sponsorship"
-//        case topicSubmissions = "topic_submissions"
+        //        case topicSubmissions = "topic_submissions"
         case user
     }
 }
@@ -80,7 +80,7 @@ struct CoverPhoto: Decodable {
 // MARK: - CoverPhotoLinks
 struct CoverPhotoLinks: Decodable {
     let linksSelf, html, download, downloadLocation: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case linksSelf = "self"
         case html, download
@@ -92,7 +92,7 @@ struct CoverPhotoLinks: Decodable {
 struct TopicSubmission: Decodable {
     let status: TopicSubmissionStatus?
     let approvedOn: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case status
         case approvedOn = "approved_on"
@@ -106,7 +106,7 @@ enum TopicSubmissionStatus: String, Decodable {
 // MARK: - TopicResponseLinks
 struct TopicResponseLinks: Decodable {
     let linksSelf, html, photos: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case linksSelf = "self"
         case html, photos
@@ -119,7 +119,7 @@ struct PreviewPhoto: Decodable {
     let createdAt, updatedAt: Date?
     let blurHash: String?
     let urls: Urls?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case createdAt = "created_at"

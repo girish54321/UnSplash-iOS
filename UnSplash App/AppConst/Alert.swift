@@ -14,10 +14,10 @@ struct Alert {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if(onOkPress != nil){
             alert.addAction(onOkPress!)
-        }else{
+        }else           {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         }
-       
+        
         DispatchQueue.main.async { vc.present(alert, animated: true) }
     }
     
@@ -34,12 +34,12 @@ struct Alert {
     static func showDonlodDoneAlert(on vc: UIViewController) {
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
-                case .default:
+            case .default:
                 vc.dismiss(animated: true, completion: nil)
                 print("default")
-                case .cancel:
+            case .cancel:
                 print("cancel")
-                case .destructive:
+            case .destructive:
                 print("destructive")
                 
             }

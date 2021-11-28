@@ -13,7 +13,7 @@ extension UIView {
         let blurLoader = BlurLoader(frame: frame)
         self.addSubview(blurLoader)
     }
-
+    
     func removeBluerLoader() {
         if let blurLoader = subviews.first(where: { $0 is BlurLoader }) {
             blurLoader.removeFromSuperview()
@@ -23,9 +23,9 @@ extension UIView {
 
 
 class BlurLoader: UIView {
-
+    
     var blurEffectView: UIVisualEffectView?
-
+    
     override init(frame: CGRect) {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -36,11 +36,11 @@ class BlurLoader: UIView {
         addSubview(blurEffectView)
         addLoader()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func addLoader() {
         guard let blurEffectView = blurEffectView else { return }
         let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)

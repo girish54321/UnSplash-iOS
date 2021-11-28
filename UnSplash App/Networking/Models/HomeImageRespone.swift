@@ -17,10 +17,10 @@ struct HomeImage: Decodable {
     var likes: Int?
     var likedByUser: Bool?
     var currentUserCollections: [String]?
-//    var sponsorship: JSONNull?
+    //    var sponsorship: JSONNull?
     var topicSubmissions: TopicSubmissions?
     var user: User?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case createdAt
@@ -33,7 +33,7 @@ struct HomeImage: Decodable {
         case urls, links, categories, likes
         case likedByUser
         case currentUserCollections
-//        case sponsorship
+        //        case sponsorship
         case topicSubmissions
         case user
     }
@@ -42,7 +42,7 @@ struct HomeImage: Decodable {
 // MARK: - HomeImageLinks
 struct HomeImageLinks: Decodable {
     var linksSelf, html, download, downloadLocation: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case linksSelf
         case html, download
@@ -53,7 +53,7 @@ struct HomeImageLinks: Decodable {
 // MARK: - TopicSubmissions
 struct TopicSubmissions: Decodable {
     var nature, currentEvents: CurrentEvents?
-
+    
     enum CodingKeys: String, CodingKey {
         case nature
         case currentEvents
@@ -64,7 +64,7 @@ struct TopicSubmissions: Decodable {
 struct CurrentEvents: Decodable {
     var status: String?
     var approvedOn: Date?
-
+    
     enum CodingKeys: String, CodingKey {
         case status
         case approvedOn
@@ -91,7 +91,7 @@ struct User: Decodable {
     var totalCollections, totalLikes, totalPhotos: Int?
     var acceptedTos, forHire: Bool?
     var social: Social?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case updatedAt
@@ -116,7 +116,7 @@ struct User: Decodable {
 struct UserLinks: Decodable {
     var linksSelf, html, photos, likes: String?
     var portfolio, following, followers: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case linksSelf
         case html, photos, likes, portfolio, following, followers
@@ -133,7 +133,7 @@ struct Social: Decodable {
     var instagramUsername: String?
     var portfolioURL: String?
     var twitterUsername, paypalEmail: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case instagramUsername
         case portfolioURL
@@ -147,28 +147,28 @@ typealias HomeImages = [HomeImage]
 // MARK: - Encode/decode helpers
 
 class JSONNull: Codable, Hashable {
-
+    
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
         return true
     }
-
+    
     public var hashValue: Int {
         return 0
     }
-
+    
     public func hash(into hasher: inout Hasher) {
         // No-op
     }
-
+    
     public init() {}
-
+    
     public required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if !container.decodeNil() {
             throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
         }
     }
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encodeNil()
@@ -177,38 +177,38 @@ class JSONNull: Codable, Hashable {
 
 class JSONCodingKey: CodingKey {
     let key: String
-
+    
     required init?(intValue: Int) {
         return nil
     }
-
+    
     required init?(stringValue: String) {
         key = stringValue
     }
-
+    
     var intValue: Int? {
         return nil
     }
-
+    
     var stringValue: String {
         return key
     }
 }
 
 class JSONAny: Decodable {
-
+    
     let value: Any
-
+    
     static func decodingError(forCodingPath codingPath: [CodingKey]) -> DecodingError {
         let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Cannot decode JSONAny")
         return DecodingError.typeMismatch(JSONAny.self, context)
     }
-
+    
     static func encodingError(forValue value: Any, codingPath: [CodingKey]) -> EncodingError {
         let context = EncodingError.Context(codingPath: codingPath, debugDescription: "Cannot encode JSONAny")
         return EncodingError.invalidValue(value, context)
     }
-
+    
     static func decode(from container: SingleValueDecodingContainer) throws -> Any {
         if let value = try? container.decode(Bool.self) {
             return value
@@ -227,7 +227,7 @@ class JSONAny: Decodable {
         }
         throw decodingError(forCodingPath: container.codingPath)
     }
-
+    
     static func decode(from container: inout UnkeyedDecodingContainer) throws -> Any {
         if let value = try? container.decode(Bool.self) {
             return value
@@ -254,7 +254,7 @@ class JSONAny: Decodable {
         }
         throw decodingError(forCodingPath: container.codingPath)
     }
-
+    
     static func decode(from container: inout KeyedDecodingContainer<JSONCodingKey>, forKey key: JSONCodingKey) throws -> Any {
         if let value = try? container.decode(Bool.self, forKey: key) {
             return value
@@ -281,7 +281,7 @@ class JSONAny: Decodable {
         }
         throw decodingError(forCodingPath: container.codingPath)
     }
-
+    
     static func decodeArray(from container: inout UnkeyedDecodingContainer) throws -> [Any] {
         var arr: [Any] = []
         while !container.isAtEnd {
@@ -290,7 +290,7 @@ class JSONAny: Decodable {
         }
         return arr
     }
-
+    
     static func decodeDictionary(from container: inout KeyedDecodingContainer<JSONCodingKey>) throws -> [String: Any] {
         var dict = [String: Any]()
         for key in container.allKeys {
@@ -299,7 +299,7 @@ class JSONAny: Decodable {
         }
         return dict
     }
-
+    
     static func encode(to container: inout UnkeyedEncodingContainer, array: [Any]) throws {
         for value in array {
             if let value = value as? Bool {
@@ -323,7 +323,7 @@ class JSONAny: Decodable {
             }
         }
     }
-
+    
     static func encode(to container: inout KeyedEncodingContainer<JSONCodingKey>, dictionary: [String: Any]) throws {
         for (key, value) in dictionary {
             let key = JSONCodingKey(stringValue: key)!
@@ -348,7 +348,7 @@ class JSONAny: Decodable {
             }
         }
     }
-
+    
     static func encode(to container: inout SingleValueEncodingContainer, value: Any) throws {
         if let value = value as? Bool {
             try container.encode(value)
@@ -364,7 +364,7 @@ class JSONAny: Decodable {
             throw encodingError(forValue: value, codingPath: container.codingPath)
         }
     }
-
+    
     public required init(from decoder: Decoder) throws {
         if var arrayContainer = try? decoder.unkeyedContainer() {
             self.value = try JSONAny.decodeArray(from: &arrayContainer)
@@ -375,7 +375,7 @@ class JSONAny: Decodable {
             self.value = try JSONAny.decode(from: container)
         }
     }
-
+    
     public func encode(to encoder: Encoder) throws {
         if let arr = self.value as? [Any] {
             var container = encoder.unkeyedContainer()

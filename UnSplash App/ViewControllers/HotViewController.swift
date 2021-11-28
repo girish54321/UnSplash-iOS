@@ -25,13 +25,13 @@ class HotViewController: UIViewController {
     // MARK: On end
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if(self.imageList.contentOffset.y >= (self.imageList.contentSize.height - self.imageList.bounds.size.height)) {
-               if !isPageRefreshing {
-                   isPageRefreshing = true
-                   pageNumber = pageNumber + 1
-                   print("on end API")
-                   getHotPhotos(page: pageNumber)
-               }
-           }
+            if !isPageRefreshing {
+                isPageRefreshing = true
+                pageNumber = pageNumber + 1
+                print("on end API")
+                getHotPhotos(page: pageNumber)
+            }
+        }
     }
     
     private func setUpImageList() {
@@ -43,16 +43,16 @@ class HotViewController: UIViewController {
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 4
         imageList.setCollectionViewLayout(layout, animated: true)
-       }
+    }
     
     func goToImageInfo(imageData:HomeImage) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
             viewController.imageInfo = imageData
-               if let navigator = navigationController {
-                   navigator.pushViewController(viewController, animated: true)
-               }
-           }
+            if let navigator = navigationController {
+                navigator.pushViewController(viewController, animated: true)
+            }
         }
+    }
 }
 
 //MARK : ListView code
@@ -70,26 +70,26 @@ extension HotViewController: UICollectionViewDataSource {
 
 // MARK: - On Tap
 extension HotViewController: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print("item at \(indexPath.section)/\(indexPath.item) tapped")
-      let item = newPhotos[indexPath.item]
-      goToImageInfo(imageData: item)
-  }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("item at \(indexPath.section)/\(indexPath.item) tapped")
+        let item = newPhotos[indexPath.item]
+        goToImageInfo(imageData: item)
+    }
 }
 
 extension HotViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
-                  layout collectionViewLayout: UICollectionViewLayout,
-                  insetForSectionAt section: Int) -> UIEdgeInsets {
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1.0, left: 8.0, bottom: 1.0, right: 8.0)
     }
     func collectionView(_ collectionView: UICollectionView,
-                   layout collectionViewLayout: UICollectionViewLayout,
-                   sizeForItemAt indexPath: IndexPath) -> CGSize {
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let lay = collectionViewLayout as! UICollectionViewFlowLayout
-    
+        
         let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-    
+        
         return CGSize(width: widthPerItem - 8, height: 240)
     }
 }
@@ -97,28 +97,28 @@ extension HotViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Alamofire API CAll
 extension HotViewController {
     func getHotPhotos(page:Int) {
-    if(newPhotos.isEmpty){
-    self.view.showBlurLoader()
-    }
+        if(newPhotos.isEmpty){
+            self.view.showBlurLoader()
+        }
         
-    let parameters: [String: Any] = [
+        let parameters: [String: Any] = [
             "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
-             "order_by": "popular",
-             "page":String(page),
-             "per_page":"20"
+            "order_by": "popular",
+            "page":String(page),
+            "per_page":"20"
         ]
-      AF.request(AppConst.baseurl+AppConst.photoUrl,method: .get,parameters: parameters).validate().responseDecodable(of: [HomeImage].self) { (response) in
-      guard let data = response.value else {
-        print(response)
-        print("Error")
-          self.view.removeBluerLoader()
-          self.isPageRefreshing = false
-        return
-      }
-        self.newPhotos.append(contentsOf: data)
-        self.imageList.reloadData()
-        self.view.removeBluerLoader()
-        self.isPageRefreshing = false
+        AF.request(AppConst.baseurl+AppConst.photoUrl,method: .get,parameters: parameters).validate().responseDecodable(of: [HomeImage].self) { (response) in
+            guard let data = response.value else {
+                print(response)
+                print("Error")
+                self.view.removeBluerLoader()
+                self.isPageRefreshing = false
+                return
+            }
+            self.newPhotos.append(contentsOf: data)
+            self.imageList.reloadData()
+            self.view.removeBluerLoader()
+            self.isPageRefreshing = false
+        }
     }
-  }
 }

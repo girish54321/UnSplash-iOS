@@ -19,16 +19,16 @@ struct TopicImageResponseElement: Codable {
     let width, height: Int?
     let color, blurHash, topicImageResponseDescription: String?
     let altDescription: String?
-//    let urls: Urls?
+    //    let urls: Urls?
     let links: TopicImageResponseLinks?
     let categories: [String]?
     let likes: Int?
     let likedByUser: Bool?
-//    let currentUserCollections: [JSONAny]?
-//    let sponsorship: JSONNull?
-//    let topicSubmissions: TopicSubmissions?
-//    let user: User?
-
+    //    let currentUserCollections: [JSONAny]?
+    //    let sponsorship: JSONNull?
+    //    let topicSubmissions: TopicSubmissions?
+    //    let user: User?
+    
     enum CodingKeys: String, CodingKey {
         case id
         case createdAt = "created_at"
@@ -40,17 +40,17 @@ struct TopicImageResponseElement: Codable {
         case altDescription = "alt_description"
         case links, categories, likes //urls
         case likedByUser = "liked_by_user"
-//        case currentUserCollections = "current_user_collections"
-//        case sponsorship
-//        case topicSubmissions = "topic_submissions"
-//        case user
+        //        case currentUserCollections = "current_user_collections"
+        //        case sponsorship
+        //        case topicSubmissions = "topic_submissions"
+        //        case user
     }
 }
 
 // MARK: - TopicImageResponseLinks
 struct TopicImageResponseLinks: Codable {
     let linksSelf, html, download, downloadLocation: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case linksSelf = "self"
         case html, download
@@ -72,7 +72,7 @@ struct TopicImageResponseLinks: Codable {
 struct The3_DRenders: Codable {
     let status: Status?
     let approvedOn: Date?
-
+    
     enum CodingKeys: String, CodingKey {
         case status
         case approvedOn = "approved_on"

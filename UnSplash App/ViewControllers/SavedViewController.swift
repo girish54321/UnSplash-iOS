@@ -8,7 +8,7 @@
 import UIKit
 
 class SavedViewController: UIViewController {
-
+    
     @IBOutlet weak var savedImageList: UICollectionView!
     var savedImages :[URL] = []
     private let refreshControl = UIRefreshControl()
@@ -20,30 +20,28 @@ class SavedViewController: UIViewController {
     }
     
     @objc func loadSavedImages(){
-        //        let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last!
-        //        print(resourceDocPath)
-                // Get the document directory url
+        // Get the document directory url
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
+        
         do {
-        // Get the directory contents urls (including subfolders urls)
-        let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
-        print(directoryContents)
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
+            print(directoryContents)
             savedImages.removeAll()
             savedImages = directoryContents
-           
+            
             savedImageList.reloadData()
             stopRefresher()
-       
+            
         } catch {
-        print(error)
-        stopRefresher()
+            print(error)
+            stopRefresher()
         }
     }
     
     func stopRefresher() {
         refreshControl.endRefreshing()
-     }
+    }
     
     private func setUpImageList() {
         savedImageList.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
@@ -57,17 +55,17 @@ class SavedViewController: UIViewController {
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 4
         savedImageList.setCollectionViewLayout(layout, animated: true)
-       }
+    }
     
     func goToImageInfo(imageData:URL) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
             viewController.localFile = true
             viewController.localImageUrl = imageData
-               if let navigator = navigationController {
-                   navigator.pushViewController(viewController, animated: true)
-               }
-           }
+            if let navigator = navigationController {
+                navigator.pushViewController(viewController, animated: true)
+            }
         }
+    }
 }
 
 
@@ -86,27 +84,27 @@ extension SavedViewController: UICollectionViewDataSource {
 
 // MARK: - On Tap
 extension SavedViewController: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print("item at \(indexPath.section)/\(indexPath.item) tapped")
-      let item = savedImages[indexPath.item]
-      print(item)
-      goToImageInfo(imageData: item)
-  }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("item at \(indexPath.section)/\(indexPath.item) tapped")
+        let item = savedImages[indexPath.item]
+        print(item)
+        goToImageInfo(imageData: item)
+    }
 }
 
 extension SavedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
-                  layout collectionViewLayout: UICollectionViewLayout,
-                  insetForSectionAt section: Int) -> UIEdgeInsets {
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1.0, left: 8.0, bottom: 1.0, right: 8.0)
     }
     func collectionView(_ collectionView: UICollectionView,
-                   layout collectionViewLayout: UICollectionViewLayout,
-                   sizeForItemAt indexPath: IndexPath) -> CGSize {
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let lay = collectionViewLayout as! UICollectionViewFlowLayout
-
+        
         let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-
+        
         return CGSize(width: widthPerItem - 8, height: 240)
     }
 }

@@ -23,28 +23,20 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     var localImageUrl : URL!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
-    let imageDownloader = ImageDownloader(
-        configuration: ImageDownloader.defaultURLSessionConfiguration(),
-        downloadPrioritization: .fifo,
-        maximumActiveDownloads: 4,
-        imageCache: AutoPurgingImageCache()
-    )
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView();
-        //        self.saveButton.set(true, animated:true)
-        hideDwonlodButton()
+        hideDownloadButton();
     }
     
-    func hideDwonlodButton(){
+    func hideDownloadButton(){
         if(localFile){
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "square.and.arrow.up"),
                 style: .done,
                 target: self,
-                action: #selector(downlodButtonOnClick)
+                action: #selector(downloadButtonOnClick)
             )
         }
     }
@@ -80,23 +72,6 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         present(activityController, animated: true) {
             print("presented")
         }
-        //        let activityController = UIActivityViewController(activityItems: ["stringWithLink"], applicationActivities: nil)
-        //
-        //        activityController.completionWithItemsHandler = { (nil, completed, _, error) in
-        //            if completed {
-        //                print("completed")
-        //            } else {
-        //                print("cancled")
-        //            }
-        //        }
-        //        present(activityController, animated: true) {
-        //            print("presented")
-        //        }
-        //        guard let url = Bundle.main.url(forResource: "img", withExtension: "pdf") else { return }
-        //        guard let url = localImageUrl else {return}
-        //        let controller = UIDocumentInteractionController(url: url)
-        //        controller.delegate = self
-        //        controller.presentPreview(animated: true)
     }
     
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
@@ -104,29 +79,29 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     }
     
     func showModal() {
-        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DwonlodsOpstionViewController") as? DwonlodsOpstionViewController {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DownloadsOptionsViewController") as? DownloadsOptionsViewController {
             viewController.url = imageInfo.urls
-               if let navigator = navigationController {
-//                   navigator.pushViewController(viewController, animated: true)
-                   if #available(iOS 15.0, *) {
-                       if let sheet = viewController.presentationController as? UISheetPresentationController{
-                           sheet.detents = [.medium(), .large()]
-                           sheet.prefersGrabberVisible = false
-                       }
-                       present(viewController, animated: true, completion: nil)
-                   } else {
-                       navigator.pushViewController(viewController, animated: true)
-                   }
-               }
+            if let navigator = navigationController {
+                //                   navigator.pushViewController(viewController, animated: true)
+                if #available(iOS 15.0, *) {
+                    if let sheet = viewController.presentationController as? UISheetPresentationController{
+                        sheet.detents = [.medium(), .large()]
+                        sheet.prefersGrabberVisible = false
+                    }
+                    present(viewController, animated: true, completion: nil)
+                } else {
+                    navigator.pushViewController(viewController, animated: true)
+                }
+            }
             
-           }
+        }
     }
     
-    @IBAction func downlodButtonOnClick(_ sender: Any) {
+    @IBAction func downloadButtonOnClick(_ sender: Any) {
         if(localFile){
             shareImage()
         }else{
-            let url =  imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"
+            _ =  imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"
             showModal()
         }
     }

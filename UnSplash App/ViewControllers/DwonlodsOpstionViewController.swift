@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DwonlodsOpstionViewController: UIViewController {
+class DownloadsOptionsViewController: UIViewController {
     
     var op :[DownlodClass] = []
     let titleForPage = "Hello Work"
@@ -30,7 +30,7 @@ class DwonlodsOpstionViewController: UIViewController {
     
 }
 
-extension DwonlodsOpstionViewController: UITableViewDataSource, UITableViewDelegate {
+extension DownloadsOptionsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return op.count
@@ -40,7 +40,7 @@ extension DwonlodsOpstionViewController: UITableViewDataSource, UITableViewDeleg
         let video = op[indexPath.row]
         print("row: \(indexPath.row)")
         self.view.showBlurLoader()
-        DownloadHelper.savePdf(urlString: video.url, fileName: "", vc: self)        
+        DownloadHelper.savePdf(urlString: video.url, fileName: "", vc: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
