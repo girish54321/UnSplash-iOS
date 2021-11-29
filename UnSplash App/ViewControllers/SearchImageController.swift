@@ -9,7 +9,7 @@ import UIKit
 import PaginatedTableView
 import Alamofire
 
-class SearchImageController: UIViewController, UISearchResultsUpdating{
+class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearchBarDelegate , UISearchControllerDelegate{
   
     @IBOutlet weak var searchImageList: UICollectionView!
     var newPhotos:[HomeImage] = []
@@ -29,13 +29,17 @@ class SearchImageController: UIViewController, UISearchResultsUpdating{
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        //Search View
         searchController.searchResultsUpdater = self;
+        searchController.automaticallyShowsSearchResultsController = false
+        searchController.showsSearchResultsController = false
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
+        //Search view
         searchImageList.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerViews")
         setUpImageList()
     }
-    
+
     // MARK: On end
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if(self.searchImageList.contentOffset.y >= (self.searchImageList.contentSize.height - self.searchImageList.bounds.size.height)) {
@@ -46,6 +50,16 @@ class SearchImageController: UIViewController, UISearchResultsUpdating{
 //                getHotPhotos(page: pageNumber)
             }
         }
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+
+       print("Go NAAA")
+
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        print("gogogogogogo")
     }
     
     func goToImageInfo(imageData:HomeImage) {
