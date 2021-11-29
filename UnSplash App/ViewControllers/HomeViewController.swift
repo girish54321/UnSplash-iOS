@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var HomeImageList: UICollectionView!
     var newPhotos:[HomeImage] = []
-    var pageNumber : Int = 1
+    var pageNumber : Int = 0
     var isPageRefreshing : Bool = false
     
     override func viewDidLoad() {

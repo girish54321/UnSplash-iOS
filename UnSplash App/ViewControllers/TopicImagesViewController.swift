@@ -14,7 +14,7 @@ class TopicImagesViewController: UIViewController {
     @IBOutlet weak var TopicImages: UICollectionView!
     var topicData: TopicResponseElement!
     var itemsArray = [UIColor]()
-    var pageNumber : Int = 1
+    var pageNumber : Int = 0
     var isPageRefreshing : Bool = false
     var newPhotos:[HomeImage] = []
     

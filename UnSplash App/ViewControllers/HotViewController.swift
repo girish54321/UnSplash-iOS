@@ -13,7 +13,7 @@ class HotViewController: UIViewController {
     
     @IBOutlet weak var imageList: UICollectionView!
     var newPhotos:[HomeImage] = []
-    var pageNumber : Int = 1
+    var pageNumber : Int = 0
     var isPageRefreshing : Bool = false
     
     override func viewDidLoad() {
