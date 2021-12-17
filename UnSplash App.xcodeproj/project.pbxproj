@@ -10,7 +10,6 @@
 		183510D026F316A200C8315B /* HotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183510CF26F316A200C8315B /* HotViewController.swift */; };
 		1852428726F46DA30025E19E /* HomeImageRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852428626F46DA30025E19E /* HomeImageRespone.swift */; };
 		9F47FA12A10C2F34510D2E3E /* Pods_UnSplash_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB5C4F80BA35ED40E4488D3 /* Pods_UnSplash_App.framework */; };
-		F4092BA227539921009CCB62 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4092BA127539921009CCB62 /* SearchViewController.swift */; };
 		F4092BA42753BC21009CCB62 /* SearchImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4092BA32753BC20009CCB62 /* SearchImageController.swift */; };
 		F41361352744036A00EFBC73 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41361342744036A00EFBC73 /* UIHelpers.swift */; };
 		F41DEA8126E4C19500215CFC /* Photos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41DEA7F26E4C19500215CFC /* Photos.xcassets */; };
@@ -48,7 +47,6 @@
 		1852428626F46DA30025E19E /* HomeImageRespone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImageRespone.swift; sourceTree = "<group>"; };
 		4F8D153D6F5DD2DA184A57AB /* Pods-UnSplash App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnSplash App.release.xcconfig"; path = "Target Support Files/Pods-UnSplash App/Pods-UnSplash App.release.xcconfig"; sourceTree = "<group>"; };
 		BD05F8EEFE8345BA6203C9FA /* Pods-UnSplash App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnSplash App.debug.xcconfig"; path = "Target Support Files/Pods-UnSplash App/Pods-UnSplash App.debug.xcconfig"; sourceTree = "<group>"; };
-		F4092BA127539921009CCB62 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F4092BA32753BC20009CCB62 /* SearchImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageController.swift; sourceTree = "<group>"; };
 		F41361342744036A00EFBC73 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 		F41DEA7F26E4C19500215CFC /* Photos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Photos.xcassets; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				F45D881A27086AA1002CD360 /* TopicImagesViewController.swift */,
 				F47CC70E2712B032008C5C91 /* SavedViewController.swift */,
 				F499518627131F500025CD37 /* DwonlodsOpstionViewController.swift */,
-				F4092BA127539921009CCB62 /* SearchViewController.swift */,
 				F4092BA32753BC20009CCB62 /* SearchImageController.swift */,
 			);
 			path = ViewControllers;
@@ -347,7 +344,6 @@
 				183510D026F316A200C8315B /* HotViewController.swift in Sources */,
 				F45D881D27086CB7002CD360 /* StretchyCollectionHeaderView.swift in Sources */,
 				F453BBFA27030D80006EF654 /* ImageInfoViewController.swift in Sources */,
-				F4092BA227539921009CCB62 /* SearchViewController.swift in Sources */,
 				F41361352744036A00EFBC73 /* UIHelpers.swift in Sources */,
 				F42B371F26FB6B4300609593 /* AppConst.swift in Sources */,
 				F45D8819270867E5002CD360 /* TopicImageResponse.swift in Sources */,

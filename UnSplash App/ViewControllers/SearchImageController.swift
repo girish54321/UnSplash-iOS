@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchImageController.swift
 //  UnSplash App
 //
 //  Created by Girish Parate on 29/08/21.
@@ -9,7 +9,7 @@ import UIKit
 import PaginatedTableView
 import Alamofire
 
-class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearchBarDelegate , UISearchControllerDelegate{
+class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearchBarDelegate, UISearchControllerDelegate{
   
     @IBOutlet weak var searchImageList: UICollectionView!
     var newPhotos:[HomeImage] = []
@@ -19,10 +19,14 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
     let searchController = UISearchController()
     // MARK: Search query
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else{
+        guard let text = searchController.searchBar.text else {
             return;
         }
         print(text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("Do Go")
     }
     
     override func viewDidLoad() {
@@ -31,34 +35,38 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         self.navigationController?.navigationBar.shadowImage = UIImage()
         //Search View
         searchController.searchResultsUpdater = self;
+        resultSearchController.delegate = self
+        resultSearchController.showsScopeBar = true
+    
         searchController.automaticallyShowsSearchResultsController = false
         searchController.showsSearchResultsController = false
+        searchController.delegate = self
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
-        //Search view
-        searchImageList.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerViews")
         setUpImageList()
     }
-
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("gona")
+    }
+    
     // MARK: On end
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if(self.searchImageList.contentOffset.y >= (self.searchImageList.contentSize.height - self.searchImageList.bounds.size.height)) {
             if !isPageRefreshing {
                 isPageRefreshing = true
                 pageNumber = pageNumber + 1
-                print("on end API")
-//                getHotPhotos(page: pageNumber)
             }
         }
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-
        print("Go NAAA")
-
     }
     
     func didDismissSearchController(_ searchController: UISearchController) {
+        // When Search is removed
         print("gogogogogogo")
     }
     
@@ -86,18 +94,6 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
 
 //MARK: ListView code
 extension SearchImageController: UICollectionViewDataSource {
-    
-    // Set Header in CollectionView
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerViews", for: indexPath) as? StretchyCollectionHeaderView {
-////             Add Image to the Header
-//            headerView.imageView.sd_setImage(with: URL(string:"https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
-//            return headerView
-//        }
-//        return UICollectionReusableView()
-//    }
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return newPhotos.count
     }
@@ -125,10 +121,6 @@ extension SearchImageController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: widthPerItem - 8, height: 240)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: 200, height: 250) // for image herder toolbar
-//    }
 }
 
 // MARK: - On Tap
