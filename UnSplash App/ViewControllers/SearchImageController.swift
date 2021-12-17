@@ -25,10 +25,6 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         print(text)
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("Do Go")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -44,6 +40,7 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         setUpImageList()
+        getHotPhotos(page: pageNumber)
     }
     
     
@@ -57,9 +54,12 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
             if !isPageRefreshing {
                 isPageRefreshing = true
                 pageNumber = pageNumber + 1
+                getHotPhotos(page: pageNumber)
             }
         }
     }
+    
+
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
        print("Go NAAA")
@@ -67,7 +67,8 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
     
     func didDismissSearchController(_ searchController: UISearchController) {
         // When Search is removed
-        print("gogogogogogo")
+        newPhotos.removeAll()
+        searchImageList.reloadData()
     }
     
     func goToImageInfo(imageData:HomeImage) {
@@ -89,7 +90,6 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         layout.minimumInteritemSpacing = 4
         searchImageList.setCollectionViewLayout(layout, animated: true)
     }
-    
 }
 
 //MARK: ListView code
