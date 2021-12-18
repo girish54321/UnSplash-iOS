@@ -43,10 +43,10 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     
     func updateView() {
         if(localFile){
-            print("local")
+            self.navigationItem.title = "Download Image"
             infoImageView.sd_setImage(with: localImageUrl)
         }else{
-            print("form net")
+            self.navigationItem.title = imageInfo.description ?? imageInfo.altDescription ?? "Save Image"
             infoImageView?.sd_setImage(with: URL(string: imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
         }
     }
