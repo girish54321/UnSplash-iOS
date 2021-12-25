@@ -35,3 +35,11 @@ struct UIHelper {
         )
     }
 }
+
+extension UIImageView {
+
+    func makeRounded() {
+        self.layer.cornerRadius = 6.0
+        self.clipsToBounds = true
+    }
+}

@@ -85,7 +85,8 @@ extension TopicsViewController {
             self.view.showBlurLoader()
         }
         let parameters: [String: Any] = [
-            "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
+            "client_id" : AppConst.clinetid,
+            "per_page" : 50
         ]
         AF.request(AppConst.baseurl+AppConst.topics,method: .get,parameters: parameters).validate().responseDecodable(of: [TopicResponseElement].self) { (response) in
             guard let data = response.value else {
@@ -95,6 +96,7 @@ extension TopicsViewController {
                 return
             }
             print("set data")
+            print(data.count)
             self.topicsData.append(contentsOf: data)
             self.view.removeBluerLoader()
             self.TopicsList.reloadData()

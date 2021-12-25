@@ -29,7 +29,7 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        //Search View
+        // Search View
         searchController.searchResultsUpdater = self;
         resultSearchController.delegate = self
         resultSearchController.showsScopeBar = true
@@ -144,7 +144,7 @@ extension SearchImageController {
         }
         
         let parameters: [String: Any] = [
-            "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
+            "client_id" : AppConst.clinetid,
             "order_by": "latest",
             "page":String(page),
             "per_page":"20"

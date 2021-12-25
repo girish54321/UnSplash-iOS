@@ -102,7 +102,7 @@ extension HotViewController {
         }
         
         let parameters: [String: Any] = [
-            "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
+            "client_id" : AppConst.clinetid,
             "order_by": "popular",
             "page":String(page),
             "per_page":"20"

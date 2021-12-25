@@ -142,7 +142,7 @@ extension TopicImagesViewController {
             self.view.showBlurLoader()
         }
         let parameters: [String: Any] = [
-            "client_id" : "jRBzm2zUw2eoIPSHZxLvY_hnSh0P8J91P2THDay4y8w",
+            "client_id" : AppConst.clinetid,
             "page":String(page),
             "per_page":"20"
         ]

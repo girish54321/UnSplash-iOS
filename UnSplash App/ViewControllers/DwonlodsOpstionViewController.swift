@@ -13,6 +13,7 @@ class DownloadsOptionsViewController: UIViewController {
     let titleForPage = "Hello Work"
     @IBOutlet weak var dowlodList: UITableView!
     var url: Urls!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dowlodList.delegate = self
@@ -21,9 +22,9 @@ class DownloadsOptionsViewController: UIViewController {
     }
     
     func CreateArrayOfurls() {
-        let url1 = DownlodClass(title: "Small", subTitle: "Smallest size", url: url.small ?? "", size: "1MB")
-        let url2 = DownlodClass(title: "Regular", subTitle: "For mobile wallpaper", url: url.regular ?? "", size: "3MB")
-        let url3 = DownlodClass(title: "Full", subTitle: "For Desktop", url: url.full ?? "", size: "6MB")
+        let url1 = DownlodClass(title: "Small", subTitle: "Smallest size", url: url.small ?? "", size: "1MB+")
+        let url2 = DownlodClass(title: "Regular", subTitle: "For mobile wallpaper", url: url.regular ?? "", size: "3MB+")
+        let url3 = DownlodClass(title: "Full", subTitle: "For Desktop", url: url.full ?? "", size: "6MB+")
         let url4 = DownlodClass(title: "Raw", subTitle: "Original file", url: url.raw ?? "", size: "10MB+")
         op = [url1,url2,url3,url4]
     }
