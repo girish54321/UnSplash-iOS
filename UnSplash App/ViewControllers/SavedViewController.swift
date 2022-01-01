@@ -12,6 +12,8 @@ class SavedViewController: UIViewController {
     @IBOutlet weak var savedImageList: UICollectionView!
     var savedImages :[URL] = []
     private let refreshControl = UIRefreshControl()
+    let fileManager = FileManager.default
+    let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,7 @@ class SavedViewController: UIViewController {
     
     @objc func loadSavedImages(){
         // Get the document directory url
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+      
         
         do {
             // Get the directory contents urls (including subfolders urls)
@@ -29,7 +31,6 @@ class SavedViewController: UIViewController {
             print(directoryContents)
             savedImages.removeAll()
             savedImages = directoryContents
-            
             savedImageList.reloadData()
             stopRefresher()
             
@@ -66,6 +67,19 @@ class SavedViewController: UIViewController {
             }
         }
     }
+    
+    func deleteFile(index:Int) {
+        do {
+            try FileManager.default.removeItem(at: self.savedImages[index])
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: self.documentsUrl, includingPropertiesForKeys: nil)
+            print(directoryContents)
+            self.savedImages.removeAll()
+            self.savedImages = directoryContents
+            self.savedImageList.reloadData()
+        } catch let error {
+            print(error)
+        }
+    }
 }
 
 
@@ -82,13 +96,17 @@ extension SavedViewController: UICollectionViewDataSource {
     }
 }
 
+
 // MARK: - On Tap
 extension SavedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("item at \(indexPath.section)/\(indexPath.item) tapped")
         let item = savedImages[indexPath.item]
-        print(item)
         goToImageInfo(imageData: item)
+    }
+    // MARK: - Contex menu
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        UIHelper.configureContextMenu(index: indexPath.row,onDelete: deleteFile)
     }
 }
 

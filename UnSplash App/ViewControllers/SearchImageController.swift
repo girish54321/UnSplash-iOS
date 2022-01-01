@@ -130,10 +130,6 @@ extension SearchImageController: UICollectionViewDelegate {
         let item = newPhotos[indexPath.item]
         goToImageInfo(imageData: item)
     }
-    // MARK: - Contex menu
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        UIHelper().configureContextMenu(index: indexPath.row)
-    }
 }
 
 // MARK: - Alamofire API CAll

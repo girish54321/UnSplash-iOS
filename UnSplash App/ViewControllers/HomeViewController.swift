@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title="Home"
+        title = "Home"
         setUpImageList()
     }
     
@@ -51,13 +51,37 @@ class HomeViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 4
+    
+        HomeImageList.register(MyTopCollectionReusableView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
+                               withReuseIdentifier: MyTopCollectionReusableView.id)
+        
+        HomeImageList.register(MyBootomCollectionReusableView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionFooter,
+                               withReuseIdentifier: MyBootomCollectionReusableView.id)
+        
         HomeImageList.setCollectionViewLayout(layout, animated: true)
+    }
+    
+    func createloader() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spiner = UIActivityIndicatorView()
+        spiner.center = footerView.center
+        footerView.addSubview(spiner)
+        spiner.startAnimating()
+        return footerView
     }
     
 }
 
 //MARK: ListView code
 extension HomeViewController: UICollectionViewDataSource {
+    // Set Header in CollectionView
+//        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//            if kind == UICollectionView.elementKindSectionHeader {
+//                return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyTopCollectionReusableView.id, for: indexPath)
+//            }
+//            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyBootomCollectionReusableView.id, for: indexPath)
+//        }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return newPhotos.count
     }
@@ -67,6 +91,14 @@ extension HomeViewController: UICollectionViewDataSource {
         cell.setimages(item: item,isFile:false)
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: view.frame.size.width, height: view.frame.size.width / 2 )
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+//        return CGSize(width: view.frame.size.width, height: view.frame.size.width / 2 )
+//    }
 }
 
 
@@ -85,6 +117,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: widthPerItem - 8, height: 240)
     }
+    
 }
 
 // MARK: - On Tap
@@ -93,10 +126,6 @@ extension HomeViewController: UICollectionViewDelegate {
         print("item at \(indexPath.section)/\(indexPath.item) tapped")
         let item = newPhotos[indexPath.item]
         goToImageInfo(imageData: item)
-    }
-    // MARK: - Contex menu
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        UIHelper().configureContextMenu(index: indexPath.row)
     }
 }
 

@@ -10,13 +10,13 @@ import UIKit
 
 struct UIHelper {
 //    MARK- :Context Menus
-    func configureContextMenu(index: Int) -> UIContextMenuConfiguration{
+    static func configureContextMenu(index: Int,onDelete:Any?) -> UIContextMenuConfiguration{
         let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
             
-            let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in
-                print("edit button clicked")
+            let edit = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in
+             print("ondelte")
+             print(index)
             }
-            
             let share = UIAction(title: "Share", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in
                 print("edit button clicked")
             }
