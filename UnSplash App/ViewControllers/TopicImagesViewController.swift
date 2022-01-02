@@ -35,7 +35,6 @@ class TopicImagesViewController: UIViewController {
             if !isPageRefreshing {
                 isPageRefreshing = true
                 pageNumber = pageNumber + 1
-                print("on end API")
                 getPhotos(page: pageNumber)
             }
         }
@@ -148,7 +147,6 @@ extension TopicImagesViewController {
         ]
         AF.request("https://api.unsplash.com/topics/"+self.topicData.id!+"/photos",method: .get,parameters: parameters).validate().responseDecodable(of:[HomeImage].self) { (response) in
             guard let data = response.value else {
-                print("Error")
                 self.view.removeBluerLoader()
                 self.isPageRefreshing = false
                 return
@@ -164,7 +162,6 @@ extension TopicImagesViewController {
 // MARK: - On Tap
 extension TopicImagesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("item at \(indexPath.section)/\(indexPath.item) tapped")
         let item = newPhotos[indexPath.item]
         goToImageInfo(imageData: item)
     }

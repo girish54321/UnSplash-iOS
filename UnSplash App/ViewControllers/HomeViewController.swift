@@ -28,7 +28,6 @@ class HomeViewController: UIViewController {
             if !isPageRefreshing {
                 isPageRefreshing = true
                 pageNumber = pageNumber + 1
-                print("on end API")
                 getHotPhotos(page: pageNumber)
             }
         }
@@ -123,7 +122,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - On Tap
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("item at \(indexPath.section)/\(indexPath.item) tapped")
         let item = newPhotos[indexPath.item]
         goToImageInfo(imageData: item)
     }

@@ -22,7 +22,6 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         guard let text = searchController.searchBar.text else {
             return;
         }
-        print(text)
     }
     
     override func viewDidLoad() {
@@ -43,11 +42,6 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         getHotPhotos(page: pageNumber)
     }
     
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("gona")
-    }
-    
     // MARK: On end
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if(self.searchImageList.contentOffset.y >= (self.searchImageList.contentSize.height - self.searchImageList.bounds.size.height)) {
@@ -59,11 +53,6 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         }
     }
     
-
-    
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-       print("Go NAAA")
-    }
     
     func didDismissSearchController(_ searchController: UISearchController) {
         // When Search is removed
@@ -126,7 +115,6 @@ extension SearchImageController: UICollectionViewDelegateFlowLayout {
 // MARK: - On Tap
 extension SearchImageController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("item at \(indexPath.section)/\(indexPath.item) tapped")
         let item = newPhotos[indexPath.item]
         goToImageInfo(imageData: item)
     }

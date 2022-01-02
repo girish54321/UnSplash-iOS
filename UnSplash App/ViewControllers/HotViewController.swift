@@ -28,7 +28,6 @@ class HotViewController: UIViewController {
             if !isPageRefreshing {
                 isPageRefreshing = true
                 pageNumber = pageNumber + 1
-                print("on end API")
                 getHotPhotos(page: pageNumber)
             }
         }
@@ -71,7 +70,6 @@ extension HotViewController: UICollectionViewDataSource {
 // MARK: - On Tap
 extension HotViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("item at \(indexPath.section)/\(indexPath.item) tapped")
         let item = newPhotos[indexPath.item]
         goToImageInfo(imageData: item)
     }
@@ -109,8 +107,6 @@ extension HotViewController {
         ]
         AF.request(AppConst.baseurl+AppConst.photoUrl,method: .get,parameters: parameters).validate().responseDecodable(of: [HomeImage].self) { (response) in
             guard let data = response.value else {
-                print(response)
-                print("Error")
                 self.view.removeBluerLoader()
                 self.isPageRefreshing = false
                 return

@@ -52,7 +52,6 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     }
     
     func shareImage() {
-        // image to share
         var imageData : UIImage!;
         do {
             let imageUrl = try Data(contentsOf: localImageUrl)
@@ -61,12 +60,11 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
             print("Error loading image : \(error)")
         }
         let activityController = UIActivityViewController(activityItems: [imageData!,], applicationActivities: nil)
-        
         activityController.completionWithItemsHandler = { (nil, completed, _, error) in
             if completed {
                 print("completed")
             } else {
-                print("cancled")
+                print("canceled")
             }
         }
         present(activityController, animated: true) {
@@ -116,7 +114,6 @@ func savePdf(urlString:String, fileName:String) {
         let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
         do {
             try pdfData?.write(to: actualPath, options: .atomic)
-            print("pdf successfully saved!")
             print(actualPath)
         } catch {
             print("Pdf could not be saved")

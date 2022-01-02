@@ -91,12 +91,9 @@ extension TopicsViewController {
         AF.request(AppConst.baseurl+AppConst.topics,method: .get,parameters: parameters).validate().responseDecodable(of: [TopicResponseElement].self) { (response) in
             guard let data = response.value else {
                 print(response)
-                print("Error")
-                print("Topoic Error")
+                print("Topic Error")
                 return
             }
-            print("set data")
-            print(data.count)
             self.topicsData.append(contentsOf: data)
             self.view.removeBluerLoader()
             self.TopicsList.reloadData()

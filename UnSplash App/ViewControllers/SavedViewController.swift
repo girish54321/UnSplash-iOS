@@ -21,19 +21,14 @@ class SavedViewController: UIViewController {
         loadSavedImages()
     }
     
-    @objc func loadSavedImages(){
-        // Get the document directory url
-      
-        
+    @objc func loadSavedImages(){        
         do {
             // Get the directory contents urls (including subfolders urls)
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
-            print(directoryContents)
             savedImages.removeAll()
             savedImages = directoryContents
             savedImageList.reloadData()
             stopRefresher()
-            
         } catch {
             print(error)
             stopRefresher()
@@ -72,7 +67,6 @@ class SavedViewController: UIViewController {
         do {
             try FileManager.default.removeItem(at: self.savedImages[index])
             let directoryContents = try FileManager.default.contentsOfDirectory(at: self.documentsUrl, includingPropertiesForKeys: nil)
-            print(directoryContents)
             self.savedImages.removeAll()
             self.savedImages = directoryContents
             self.savedImageList.reloadData()
@@ -100,7 +94,6 @@ extension SavedViewController: UICollectionViewDataSource {
 // MARK: - On Tap
 extension SavedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("item at \(indexPath.section)/\(indexPath.item) tapped")
         let item = savedImages[indexPath.item]
         goToImageInfo(imageData: item)
     }
