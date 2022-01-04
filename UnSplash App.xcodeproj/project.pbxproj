@@ -15,6 +15,8 @@
 		F41DEA8126E4C19500215CFC /* Photos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41DEA7F26E4C19500215CFC /* Photos.xcassets */; };
 		F41DEA8226E4C19500215CFC /* Photos.plist in Resources */ = {isa = PBXBuildFile; fileRef = F41DEA8026E4C19500215CFC /* Photos.plist */; };
 		F41DEA8526E4C20800215CFC /* AnnotatedPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */; };
+		F422931B2781E8D8006E6481 /* HomeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422931A2781E8D8006E6481 /* HomeViewController2.swift */; };
+		F422931D2781EEE1006E6481 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422931C2781EEE0006E6481 /* HomeCollectionViewController.swift */; };
 		F42B371C26FB57D000609593 /* imageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B371B26FB57D000609593 /* imageItem.swift */; };
 		F42B371F26FB6B4300609593 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B371E26FB6B4300609593 /* AppConst.swift */; };
 		F453BBFA27030D80006EF654 /* ImageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F453BBF927030D80006EF654 /* ImageInfoViewController.swift */; };
@@ -53,6 +55,8 @@
 		F41DEA7F26E4C19500215CFC /* Photos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Photos.xcassets; sourceTree = "<group>"; };
 		F41DEA8026E4C19500215CFC /* Photos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Photos.plist; sourceTree = "<group>"; };
 		F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedPhotoCell.swift; sourceTree = "<group>"; };
+		F422931A2781E8D8006E6481 /* HomeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController2.swift; sourceTree = "<group>"; };
+		F422931C2781EEE0006E6481 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		F42B371B26FB57D000609593 /* imageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageItem.swift; sourceTree = "<group>"; };
 		F42B371E26FB6B4300609593 /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
 		F453BBF927030D80006EF654 /* ImageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 				F47CC70E2712B032008C5C91 /* SavedViewController.swift */,
 				F499518627131F500025CD37 /* DwonlodsOpstionViewController.swift */,
 				F4092BA32753BC20009CCB62 /* SearchImageController.swift */,
+				F422931A2781E8D8006E6481 /* HomeViewController2.swift */,
+				F422931C2781EEE0006E6481 /* HomeCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -346,6 +352,8 @@
 			files = (
 				183510D026F316A200C8315B /* HotViewController.swift in Sources */,
 				F46A3A1027808456002B4E63 /* MyCollectionReusableView.swift in Sources */,
+				F422931B2781E8D8006E6481 /* HomeViewController2.swift in Sources */,
+				F422931D2781EEE1006E6481 /* HomeCollectionViewController.swift in Sources */,
 				F45D881D27086CB7002CD360 /* StretchyCollectionHeaderView.swift in Sources */,
 				F453BBFA27030D80006EF654 /* ImageInfoViewController.swift in Sources */,
 				F41361352744036A00EFBC73 /* UIHelpers.swift in Sources */,
