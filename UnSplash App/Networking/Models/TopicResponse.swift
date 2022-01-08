@@ -14,30 +14,18 @@ struct TopicResponseElement: Decodable {
     let onlySubmissionsAfter: String?
     let featured: Bool?
     let totalPhotos: Int?
-    //    let currentUserContributions: [String]?
-    //    let totalCurrentUserSubmissions: String?
-    //    let links: TopicResponseLinks?
-    let status: TopicResponseStatus?
-    //    let owners: [User]?
     let coverPhoto: CoverPhoto?
-    //    let previewPhotos: [PreviewPhoto]?
     
     enum CodingKeys: String, CodingKey {
         case id, slug, title
         case topicResponseDescription = "description"
-        //        case publishedAt = "published_at"
         case updatedAt = "updated_at"
         case startsAt = "starts_at"
         case endsAt = "ends_at"
         case onlySubmissionsAfter = "only_submissions_after"
         case featured = "featured"
         case totalPhotos = "total_photos"
-        //        case currentUserContributions = "current_user_contributions"
-        //        case totalCurrentUserSubmissions = "total_current_user_submissions"
-        //        case links, status, owners
-        case status
         case coverPhoto = "cover_photo"
-        //        case previewPhotos = "preview_photos"
     }
 }
 
@@ -51,12 +39,10 @@ struct CoverPhoto: Decodable {
     let altDescription: String?
     let urls: Urls?
     let links: CoverPhotoLinks?
-    //    let categories: [String]?
     let likes: Int?
     let likedByUser: Bool?
     let currentUserCollections: [String]?
     let sponsorship: String?
-    //    let topicSubmissions: [String: TopicSubmission]?
     let user: User?
     
     enum CodingKeys: String, CodingKey {
@@ -72,7 +58,6 @@ struct CoverPhoto: Decodable {
         case likedByUser = "liked_by_user"
         case currentUserCollections = "current_user_collections"
         case sponsorship = "sponsorship"
-        //        case topicSubmissions = "topic_submissions"
         case user
     }
 }
@@ -133,5 +118,4 @@ enum TopicResponseStatus: String, Codable {
     case statusOpen = "open"
 }
 
-//typealias TopicResponse = [TopicResponseElement]
 
