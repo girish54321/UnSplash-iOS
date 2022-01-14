@@ -33,13 +33,23 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         resultSearchController.delegate = self
         resultSearchController.showsScopeBar = true
     
+        // Fix On Search clieck
+        searchController.searchResultsUpdater = self
+           searchController.searchBar.delegate = self
+        
         searchController.automaticallyShowsSearchResultsController = false
         searchController.showsSearchResultsController = false
+        searchController.delegate = self
         searchController.delegate = self
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         setUpImageList()
         getHotPhotos(page: pageNumber)
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("Hey Seach")
     }
     
     // MARK: On end
