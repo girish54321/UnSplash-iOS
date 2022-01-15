@@ -18,6 +18,8 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
     var resultSearchController = UISearchBar()
     let searchController = UISearchController()
     var searchText : String = ""
+    
+    @IBOutlet weak var searchImage: UIImageView!
     // MARK: Search query
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
@@ -52,6 +54,7 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Hey Seach")
         getSearchPhotos(page: pageNumber)
+        searchImage.isHidden = true
     }
     
     // MARK: On end
@@ -71,6 +74,7 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         newPhotos.removeAll()
         searchImageList.reloadData()
         pageNumber = 0
+        searchImage.isHidden = false
     }
     
     func goToImageInfo(imageData:HomeImage) {
