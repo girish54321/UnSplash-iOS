@@ -20,6 +20,10 @@ class ImageItem: UICollectionViewCell {
         imageviewItem.sd_setImage(with: URL(string: item.urls?.small ?? "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
     }
     
+    func setimagesForSearch(item :Result,isFile :Bool){
+        imageviewItem.sd_setImage(with: URL(string: item.urls?.small ?? "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
+    }
+    
     func setLocalImage(url:URL){
         imageviewItem.sd_setImage(with: url)
     }

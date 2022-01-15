@@ -10,18 +10,20 @@ import PaginatedTableView
 import Alamofire
 
 class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearchBarDelegate, UISearchControllerDelegate{
-  
+    
     @IBOutlet weak var searchImageList: UICollectionView!
-    var newPhotos:[HomeImage] = []
+    var newPhotos:[Result] = []
     var pageNumber : Int = 0
     var isPageRefreshing : Bool = false
     var resultSearchController = UISearchBar()
     let searchController = UISearchController()
+    var searchText : String = ""
     // MARK: Search query
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
             return;
         }
+        self.searchText = text
     }
     
     override func viewDidLoad() {
@@ -32,10 +34,10 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         searchController.searchResultsUpdater = self;
         resultSearchController.delegate = self
         resultSearchController.showsScopeBar = true
-    
+        
         // Fix On Search clieck
         searchController.searchResultsUpdater = self
-           searchController.searchBar.delegate = self
+        searchController.searchBar.delegate = self
         
         searchController.automaticallyShowsSearchResultsController = false
         searchController.showsSearchResultsController = false
@@ -44,21 +46,21 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         setUpImageList()
-        getHotPhotos(page: pageNumber)
     }
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Hey Seach")
+        getSearchPhotos(page: pageNumber)
     }
     
     // MARK: On end
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if(self.searchImageList.contentOffset.y >= (self.searchImageList.contentSize.height - self.searchImageList.bounds.size.height)) {
-            if !isPageRefreshing {
+            if  !isPageRefreshing && self.searchText != ""  {
                 isPageRefreshing = true
                 pageNumber = pageNumber + 1
-                getHotPhotos(page: pageNumber)
+                getSearchPhotos(page: pageNumber)
             }
         }
     }
@@ -68,6 +70,7 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         // When Search is removed
         newPhotos.removeAll()
         searchImageList.reloadData()
+        pageNumber = 0
     }
     
     func goToImageInfo(imageData:HomeImage) {
@@ -99,7 +102,7 @@ extension SearchImageController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchImageItem", for: indexPath as IndexPath) as! ImageItem
         let item = newPhotos[indexPath.row]
-        cell.setimages(item: item,isFile:false)
+        cell.setimagesForSearch(item: item,isFile:false)
         return cell
     }
 }
@@ -126,31 +129,33 @@ extension SearchImageController: UICollectionViewDelegateFlowLayout {
 extension SearchImageController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = newPhotos[indexPath.item]
-        goToImageInfo(imageData: item)
+//        goToImageInfo(imageData: item)
     }
 }
 
 // MARK: - Alamofire API CAll
 extension SearchImageController {
-    func getHotPhotos(page:Int) {
+    func getSearchPhotos(page:Int) {
         if(newPhotos.isEmpty){
             self.view.showBlurLoader()
         }
         
         let parameters: [String: Any] = [
             "client_id" : AppConst.clinetid,
-            "order_by": "latest",
+            "query": searchText,
             "page":String(page),
-            "per_page":"20"
+            "per_page":"30"
         ]
-        AF.request(AppConst.baseurl+AppConst.photoUrl,method: .get,parameters: parameters).validate().responseDecodable(of: [HomeImage].self) { (response) in
+        AF.request(AppConst.baseurl+AppConst.search,method: .get,parameters: parameters).validate().responseDecodable(of: SearchImageResponse.self) { (response) in
+            print(response)
             guard let data = response.value else {
                 print("Error")
+                print(response)
                 self.view.removeBluerLoader()
                 self.isPageRefreshing = false
                 return
             }
-            self.newPhotos.append(contentsOf: data)
+            self.newPhotos.append(contentsOf: data.results!)
             self.searchImageList.reloadData()
             self.view.removeBluerLoader()
             self.isPageRefreshing = false
