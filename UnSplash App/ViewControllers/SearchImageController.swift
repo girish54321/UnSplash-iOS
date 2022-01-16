@@ -38,7 +38,6 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
         resultSearchController.showsScopeBar = true
         
         // Fix On Search clieck
-        searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         
         searchController.automaticallyShowsSearchResultsController = false
@@ -54,6 +53,9 @@ class SearchImageController: UIViewController, UISearchResultsUpdating ,UISearch
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("Hey Seach")
         getSearchPhotos(page: pageNumber)
+        newPhotos.removeAll()
+        searchImageList.reloadData()
+        pageNumber = 0
         searchImage.isHidden = true
     }
     
