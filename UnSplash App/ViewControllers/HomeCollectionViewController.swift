@@ -78,6 +78,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         return cell
     }
     
+    // MARK: For Size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -92,6 +93,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         
         return CGSize(width: widthPerItem - 8, height: 240)
     }
+    // MARK: For Size
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = newPhotos[indexPath.item]
