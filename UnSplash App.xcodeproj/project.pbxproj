@@ -10,8 +10,6 @@
 		1852428726F46DA30025E19E /* HomeImageRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852428626F46DA30025E19E /* HomeImageRespone.swift */; };
 		9F47FA12A10C2F34510D2E3E /* Pods_UnSplash_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB5C4F80BA35ED40E4488D3 /* Pods_UnSplash_App.framework */; };
 		F41361352744036A00EFBC73 /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41361342744036A00EFBC73 /* UIHelpers.swift */; };
-		F41DEA8126E4C19500215CFC /* Photos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41DEA7F26E4C19500215CFC /* Photos.xcassets */; };
-		F41DEA8226E4C19500215CFC /* Photos.plist in Resources */ = {isa = PBXBuildFile; fileRef = F41DEA8026E4C19500215CFC /* Photos.plist */; };
 		F41DEA8526E4C20800215CFC /* AnnotatedPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */; };
 		F42B371C26FB57D000609593 /* imageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B371B26FB57D000609593 /* imageItem.swift */; };
 		F42B371F26FB6B4300609593 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42B371E26FB6B4300609593 /* AppConst.swift */; };
@@ -51,8 +49,6 @@
 		4F8D153D6F5DD2DA184A57AB /* Pods-UnSplash App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnSplash App.release.xcconfig"; path = "Target Support Files/Pods-UnSplash App/Pods-UnSplash App.release.xcconfig"; sourceTree = "<group>"; };
 		BD05F8EEFE8345BA6203C9FA /* Pods-UnSplash App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnSplash App.debug.xcconfig"; path = "Target Support Files/Pods-UnSplash App/Pods-UnSplash App.debug.xcconfig"; sourceTree = "<group>"; };
 		F41361342744036A00EFBC73 /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
-		F41DEA7F26E4C19500215CFC /* Photos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Photos.xcassets; sourceTree = "<group>"; };
-		F41DEA8026E4C19500215CFC /* Photos.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Photos.plist; sourceTree = "<group>"; };
 		F41DEA8426E4C20800215CFC /* AnnotatedPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotatedPhotoCell.swift; sourceTree = "<group>"; };
 		F42B371B26FB57D000609593 /* imageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageItem.swift; sourceTree = "<group>"; };
 		F42B371E26FB6B4300609593 /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
@@ -130,8 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				F45F771026DBDBB3009CAAE1 /* Assets.xcassets */,
-				F41DEA8026E4C19500215CFC /* Photos.plist */,
-				F41DEA7F26E4C19500215CFC /* Photos.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -296,11 +290,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F41DEA8126E4C19500215CFC /* Photos.xcassets in Resources */,
 				F45F771426DBDBB3009CAAE1 /* LaunchScreen.storyboard in Resources */,
 				F45F771126DBDBB3009CAAE1 /* Assets.xcassets in Resources */,
 				F45F770F26DBDBB3009CAAE1 /* Main.storyboard in Resources */,
-				F41DEA8226E4C19500215CFC /* Photos.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

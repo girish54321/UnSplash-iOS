@@ -10,14 +10,14 @@ import UIKit
 class DownloadsOptionsViewController: UIViewController {
     
     var op :[DownlodClass] = []
-    let titleForPage = "Hello Work"
-    @IBOutlet weak var dowlodList: UITableView!
+    @IBOutlet weak var downloadList: UITableView!
+    
     var url: Urls!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dowlodList.delegate = self
-        dowlodList.dataSource = self
+        downloadList.delegate = self
+        downloadList.dataSource = self
         CreateArrayOfurls()
     }
     
@@ -45,7 +45,7 @@ extension DownloadsOptionsViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let video = op[indexPath.row]
-        let cell = dowlodList.dequeueReusableCell(withIdentifier: "DwonlodCell") as! DwonlodCell
+        let cell = downloadList.dequeueReusableCell(withIdentifier: "DwonlodCell") as! DwonlodCell
         cell.updateTitle(item: video)
         return cell
     }

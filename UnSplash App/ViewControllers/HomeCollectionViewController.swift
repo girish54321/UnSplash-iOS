@@ -30,7 +30,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
     
-    // MARK: On Tap Fuction
+    // MARK: On Tap Function
     func goToImageInfo(imageData:HomeImage) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
             viewController.imageInfo = imageData

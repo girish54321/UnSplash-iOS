@@ -26,10 +26,11 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView();
+        loadImageView();
         hideDownloadButton();
     }
     
+    //MARK: Hide Download Button
     func hideDownloadButton(){
         if(localFile){
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -41,7 +42,8 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         }
     }
     
-    func updateView() {
+    //MARK: Load Image into View
+    func loadImageView() {
         if(localFile){
             self.navigationItem.title = "Download Image"
             infoImageView.sd_setImage(with: localImageUrl)
@@ -51,7 +53,7 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         }
     }
     
-    func shareImage() {
+    func saveToStorage() {
         var imageData : UIImage!;
         do {
             let imageUrl = try Data(contentsOf: localImageUrl)
@@ -76,7 +78,7 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         return self
     }
     
-    func showModal() {
+    func showDownloadOptionModal() {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DownloadsOptionsViewController") as? DownloadsOptionsViewController {
             viewController.url = imageInfo.urls
             if let navigator = navigationController {
@@ -95,25 +97,9 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     
     @IBAction func downloadButtonOnClick(_ sender: Any) {
         if(localFile){
-            shareImage()
+            saveToStorage()
         } else {
-            showModal()
-        }
-    }
-}
-
-func savePdf(urlString:String, fileName:String) {
-    DispatchQueue.main.async {
-        let url = URL(string: urlString)
-        let pdfData = try? Data.init(contentsOf: url!)
-        let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
-        let pdfNameFromUrl = "\(UUID().uuidString).png"
-        let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
-        do {
-            try pdfData?.write(to: actualPath, options: .atomic)
-            print(actualPath)
-        } catch {
-            print("Pdf could not be saved")
+            showDownloadOptionModal()
         }
     }
 }
