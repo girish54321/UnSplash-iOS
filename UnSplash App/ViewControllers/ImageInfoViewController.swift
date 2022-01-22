@@ -80,9 +80,8 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DownloadsOptionsViewController") as? DownloadsOptionsViewController {
             viewController.url = imageInfo.urls
             if let navigator = navigationController {
-                //                   navigator.pushViewController(viewController, animated: true)
                 if #available(iOS 15.0, *) {
-                    if let sheet = viewController.presentationController as? UISheetPresentationController{
+                    if let sheet = viewController.presentationController as? UISheetPresentationController {
                         sheet.detents = [.medium(), .large()]
                         sheet.prefersGrabberVisible = false
                     }
@@ -91,15 +90,13 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
                     navigator.pushViewController(viewController, animated: true)
                 }
             }
-            
         }
     }
     
     @IBAction func downloadButtonOnClick(_ sender: Any) {
         if(localFile){
             shareImage()
-        }else{
-            _ =  imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"
+        } else {
             showModal()
         }
     }

@@ -8,8 +8,6 @@
 import UIKit
 import Alamofire
 
-private let reuseIdentifier = "Cell"
-
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var newPhotos:[HomeImage] = []
     var pageNumber : Int = 0
@@ -21,7 +19,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         setUpImageList()
     }
     
-    // MARK: On end
+    // MARK: On end Scroll
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if(self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height)) {
             if !isPageRefreshing {
@@ -32,6 +30,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
     
+    // MARK: On Tap Fuction
     func goToImageInfo(imageData:HomeImage) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
             viewController.imageInfo = imageData
@@ -41,6 +40,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
     
+    //MARK: Setup ListView
     private func setUpImageList() {
         collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
@@ -59,15 +59,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         collectionView.setCollectionViewLayout(layout, animated: true)
     }
     
-    func createloader() -> UIView {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-        let spiner = UIActivityIndicatorView()
-        spiner.center = footerView.center
-        footerView.addSubview(spiner)
-        spiner.startAnimating()
-        return footerView
-    }
-    
+    //MARK: List Size
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return newPhotos.count
     }
@@ -78,13 +70,14 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         return cell
     }
     
-    // MARK: For Size
+    // MARK: List Item Size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1.0, left: 8.0, bottom: 1.0, right: 8.0)
     }
     
+    // MARK: List Item Size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         let lay = collectionViewLayout as! UICollectionViewFlowLayout
@@ -93,8 +86,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         
         return CGSize(width: widthPerItem - 8, height: 240)
     }
-    // MARK: For Size
     
+   // MARK: On List Tap
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = newPhotos[indexPath.item]
         goToImageInfo(imageData: item)
