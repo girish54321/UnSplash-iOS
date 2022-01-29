@@ -79,9 +79,10 @@ class SearchImageCollectionViewController: UICollectionViewController, UISearchR
 //        searchImage.isHidden = false
     }
     
-    func goToImageInfo(imageData:HomeImage) {
+    func goToImageInfo(imageData:Result) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
-            viewController.imageInfo = imageData
+            let data: SelectedImageClass = SelectedImageClass(description: imageData.resultDescription ?? "NA", urls: imageData.urls!)
+            SelectedImageSingleton.selectedSelectedImage.selectedImage = data
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
             }
@@ -128,7 +129,7 @@ class SearchImageCollectionViewController: UICollectionViewController, UISearchR
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = newPhotos[indexPath.item]
-//        goToImageInfo(imageData: item)
+        goToImageInfo(imageData: item)
     }
 }
 

@@ -33,6 +33,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: On Tap Function
     func goToImageInfo(imageData:HomeImage) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
+            let data: SelectedImageClass = SelectedImageClass(description: imageData.description ?? "NA", urls: imageData.urls!)
+            SelectedImageSingleton.selectedSelectedImage.selectedImage = data
             viewController.imageInfo = imageData
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)

@@ -22,10 +22,12 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     var localFile : Bool = false
     var localImageUrl : URL!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
+    var selectedImage : SelectedImageClass!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedImage = SelectedImageSingleton.selectedSelectedImage.selectedImage
         loadImageView();
         hideDownloadButton();
     }
@@ -48,8 +50,8 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
             self.navigationItem.title = "Download Image"
             infoImageView.sd_setImage(with: localImageUrl)
         }else{
-            self.navigationItem.title = imageInfo.description ?? imageInfo.altDescription ?? "Save Image"
-            infoImageView?.sd_setImage(with: URL(string: imageInfo.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
+            self.navigationItem.title = selectedImage.description
+            infoImageView?.sd_setImage(with: URL(string: selectedImage.urls?.regular ??  "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
         }
     }
     
@@ -80,7 +82,7 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     
     func showDownloadOptionModal() {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DownloadsOptionsViewController") as? DownloadsOptionsViewController {
-            viewController.url = imageInfo.urls
+            viewController.url = selectedImage.urls
             if let navigator = navigationController {
                 if #available(iOS 15.0, *) {
                     if let sheet = viewController.presentationController as? UISheetPresentationController {
