@@ -1,22 +1,43 @@
 PODS:
+  - Alamofire (5.4.3)
+  - AlamofireImage (4.2.0):
+    - Alamofire (~> 5.4)
+  - FittedSheets (2.4.2)
+  - PaginatedTableView (1.0.1)
+  - SDDownloadManager (1.1.0)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage (~> 4.1)
+  - FittedSheets
+  - PaginatedTableView
+  - SDDownloadManager
   - SDWebImage
   - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AlamofireImage
+    - FittedSheets
+    - PaginatedTableView
+    - SDDownloadManager
     - SDWebImage
     - Toast-Swift
 
 SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
+  FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
+  PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
+  SDDownloadManager: 62a9339c03ea27606effefd9aa1800e4127e3a52
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: e824ad74fcce5557f25a890866f657ab97bea91f
+PODFILE CHECKSUM: 84a456443b067d1c46f16e74d058b16e752cf072
 
 COCOAPODS: 1.10.2
