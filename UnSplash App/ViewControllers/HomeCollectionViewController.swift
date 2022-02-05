@@ -72,6 +72,11 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.3,animations: {cell.alpha = 1}, completion: nil)
+    }
+    
     // MARK: List Item Size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
