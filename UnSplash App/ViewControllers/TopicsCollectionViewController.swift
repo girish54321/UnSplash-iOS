@@ -18,7 +18,7 @@ class TopicsCollectionViewController: UICollectionViewController, UICollectionVi
     }
     
     func goToTopicImages(imageData:TopicResponseElement) {
-        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TopicImagesViewController") as? TopicImagesViewController {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TopicImagesCollectionViewController") as? TopicImagesCollectionViewController {
             viewController.topicData = imageData
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)

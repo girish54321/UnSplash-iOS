@@ -35,7 +35,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
             let data: SelectedImageClass = SelectedImageClass(description: imageData.description ?? "NA", urls: imageData.urls!)
             SelectedImageSingleton.selectedSelectedImage.selectedImage = data
-            viewController.imageInfo = imageData
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
             }
@@ -65,6 +64,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return newPhotos.count
     }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeItem", for: indexPath as IndexPath) as! ImageItem
         let item = newPhotos[indexPath.row]
