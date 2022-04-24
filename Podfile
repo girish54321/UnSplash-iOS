@@ -11,7 +11,7 @@ target 'UnSplash App' do
   pod 'AlamofireImage', '~> 4.1'
   pod 'SDDownloadManager'
   pod 'FittedSheets'
-
+  pod 'CHTCollectionViewWaterfallLayout'
   # Pods for UnSplash App
 
 end

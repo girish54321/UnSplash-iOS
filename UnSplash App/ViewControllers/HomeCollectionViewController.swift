@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CHTCollectionViewWaterfallLayout
 import Alamofire
 
-class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeCollectionViewController: UICollectionViewController, CHTCollectionViewDelegateWaterfallLayout {
     var newPhotos:[HomeImage] = []
     var pageNumber : Int = 0
     var isPageRefreshing : Bool = false
@@ -46,10 +47,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 4
+//        let layout = UICollectionViewFlowLayout()
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.itemRenderDirection = .leftToRight
+        layout.columnCount = 2
+//        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 4.0, left: 8.0, bottom: 4.0, right: 8.0)
     
         collectionView.register(MyTopCollectionReusableView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
                                withReuseIdentifier: MyTopCollectionReusableView.id)
@@ -64,7 +67,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return newPhotos.count
     }
-    
+    //MARK: ImageItem
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeItem", for: indexPath as IndexPath) as! ImageItem
         let item = newPhotos[indexPath.row]
@@ -72,10 +75,10 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        cell.alpha = 0
-        UIView.animate(withDuration: 0.3,animations: {cell.alpha = 1}, completion: nil)
-    }
+//    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        cell.alpha = 0
+//        UIView.animate(withDuration: 0.3,animations: {cell.alpha = 1}, completion: nil)
+//    }
     
     // MARK: List Item Size
     func collectionView(_ collectionView: UICollectionView,
@@ -85,14 +88,20 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     // MARK: List Item Size
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        let lay = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-        
-        return CGSize(width: widthPerItem - 8, height: 240)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = newPhotos[indexPath.row]
+        let h = item.height!  //view.frame.size.width / 2
+        return CGSize(width: CGFloat(item.width!), height: CGFloat(h))
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+//    {
+//        let lay = collectionViewLayout as! UICollectionViewFlowLayout
+//
+//        let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
+//
+//        return CGSize(width: widthPerItem - 8, height: 240)
+//    }
     
    // MARK: On List Tap
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

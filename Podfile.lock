@@ -2,6 +2,9 @@ PODS:
   - Alamofire (5.4.3)
   - AlamofireImage (4.2.0):
     - Alamofire (~> 5.4)
+  - CHTCollectionViewWaterfallLayout (0.9.10):
+    - CHTCollectionViewWaterfallLayout/Swift (= 0.9.10)
+  - CHTCollectionViewWaterfallLayout/Swift (0.9.10)
   - FittedSheets (2.4.2)
   - PaginatedTableView (1.0.1)
   - SDDownloadManager (1.1.0)
@@ -13,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage (~> 4.1)
+  - CHTCollectionViewWaterfallLayout
   - FittedSheets
   - PaginatedTableView
   - SDDownloadManager
@@ -23,6 +27,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - CHTCollectionViewWaterfallLayout
     - FittedSheets
     - PaginatedTableView
     - SDDownloadManager
@@ -32,12 +37,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
+  CHTCollectionViewWaterfallLayout: b989a459788d7657ac010e03bc0f7eedca95a420
   FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
   PaginatedTableView: 294d9831d5ddf5c0dcfbb4a281d4fcfb8d12f55a
   SDDownloadManager: 62a9339c03ea27606effefd9aa1800e4127e3a52
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 84a456443b067d1c46f16e74d058b16e752cf072
+PODFILE CHECKSUM: e5ef1e03875bb8c9d17f96a98b4e49a27f40ec6c
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.2
