@@ -25,7 +25,8 @@ class TopicImagesCollectionViewController: UICollectionViewController, UICollect
         self.collectionView.dataSource = self
         setUpList()
         // Register Header
-        self.collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
+//        self.collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
+        // Set CollectionView Flow Layout for Header and Items
     }
     
     // MARK: On end
@@ -40,14 +41,22 @@ class TopicImagesCollectionViewController: UICollectionViewController, UICollect
     }
     
     private func setUpList() {
-        self.collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 4
-        self.collectionView.setCollectionViewLayout(layout, animated: true)
+//        self.collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
+//        self.collectionView.delegate = self
+//        self.collectionView.dataSource = self
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        layout.minimumLineSpacing = 8
+//        layout.minimumInteritemSpacing = 4
+//        self.collectionView.setCollectionViewLayout(layout, animated: true)
+        let flowLayout = CollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.itemSize = CGSize(width: 100, height: 100)
+        flowLayout.minimumLineSpacing = 8.0
+        flowLayout.minimumInteritemSpacing = 4.0
+        collectionView.collectionViewLayout = flowLayout
+        // Register Header
+        collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
