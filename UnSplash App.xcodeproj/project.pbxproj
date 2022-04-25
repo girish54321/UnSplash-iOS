@@ -17,6 +17,7 @@
 		F45D8819270867E5002CD360 /* TopicImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D8818270867E5002CD360 /* TopicImageResponse.swift */; };
 		F45D881D27086CB7002CD360 /* StretchyCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D881C27086CB7002CD360 /* StretchyCollectionHeaderView.swift */; };
 		F45D881F27086D14002CD360 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D881E27086D14002CD360 /* CollectionViewFlowLayout.swift */; };
+		F45F2E7F2816E33D007791F2 /* BlurHashDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F2E7E2816E33D007791F2 /* BlurHashDecode.swift */; };
 		F45F770826DBDBB3009CAAE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F770726DBDBB3009CAAE1 /* AppDelegate.swift */; };
 		F45F770A26DBDBB3009CAAE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F770926DBDBB3009CAAE1 /* SceneDelegate.swift */; };
 		F45F770F26DBDBB3009CAAE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45F770D26DBDBB3009CAAE1 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		F45D8818270867E5002CD360 /* TopicImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicImageResponse.swift; sourceTree = "<group>"; };
 		F45D881C27086CB7002CD360 /* StretchyCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyCollectionHeaderView.swift; sourceTree = "<group>"; };
 		F45D881E27086D14002CD360 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		F45F2E7E2816E33D007791F2 /* BlurHashDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashDecode.swift; sourceTree = "<group>"; };
 		F45F770426DBDBB3009CAAE1 /* UnSplash App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UnSplash App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45F770726DBDBB3009CAAE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F45F770926DBDBB3009CAAE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				F45D881E27086D14002CD360 /* CollectionViewFlowLayout.swift */,
 				F4674707271D89A00016058D /* DownlodCell.swift */,
 				F46A3A0F27808456002B4E63 /* MyCollectionReusableView.swift */,
+				F45F2E7E2816E33D007791F2 /* BlurHashDecode.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,14 +191,14 @@
 			isa = PBXGroup;
 			children = (
 				F4EBD3692789B28A0008F860 /* HomeCollectionViewController.swift */,
+				F4ECDBAB278493D60098C221 /* HotCollectionViewController.swift */,
+				F4DC42DA27899AA5009A1BE7 /* TopicsCollectionViewController.swift */,
+				F45FD26327D3737D003635EC /* TopicImagesCollectionViewController.swift */,
 				F453BBF927030D80006EF654 /* ImageInfoViewController.swift */,
 				F47CC70E2712B032008C5C91 /* SavedViewController.swift */,
 				F499518627131F500025CD37 /* DwonlodsOpstionViewController.swift */,
-				F4ECDBAB278493D60098C221 /* HotCollectionViewController.swift */,
-				F4DC42DA27899AA5009A1BE7 /* TopicsCollectionViewController.swift */,
 				F4EBD36B2789B5720008F860 /* SavedCollectionViewController.swift */,
 				F4A9FC7027946A4600447873 /* SearchImageCollectionViewController.swift */,
-				F45FD26327D3737D003635EC /* TopicImagesCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				F45D8819270867E5002CD360 /* TopicImageResponse.swift in Sources */,
 				F4674708271D89A00016058D /* DownlodCell.swift in Sources */,
 				F47EF7C12791CC7A0022BE15 /* SearchResponse.swift in Sources */,
+				F45F2E7F2816E33D007791F2 /* BlurHashDecode.swift in Sources */,
 				F4DC42DB27899AA5009A1BE7 /* TopicsCollectionViewController.swift in Sources */,
 				F4674710271DAB8C0016058D /* BlurLoader.swift in Sources */,
 				F48E06FE27042B0E00DA4D51 /* TopicResponse.swift in Sources */,

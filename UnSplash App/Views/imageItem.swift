@@ -13,15 +13,25 @@ class ImageItem: UICollectionViewCell {
     
     @IBOutlet weak var imageviewItem: UIImageView!
     
+    let blur_hash = "LLA,?u%MD*IU~pxuIUIU-;t7RjNF"
+    
     override func awakeFromNib() {
         imageviewItem.makeRounded()
     }
     func setimages(item :HomeImage,isFile :Bool){
-        imageviewItem.sd_setImage(with: URL(string: item.urls?.small ?? "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
+        let height = item.height! / 120
+        let width = item.width! / 120
+        let hash = item.blur_hash ?? blur_hash
+        let size = CGSize(width: CGFloat(width), height: CGFloat(height))
+        imageviewItem.sd_setImage(with: URL(string: item.urls?.small ?? "Defult URL"), placeholderImage: UIImage.init(blurHash: hash, size: size))
     }
     
     func setimagesForSearch(item :Result,isFile :Bool){
-        imageviewItem.sd_setImage(with: URL(string: item.urls?.small ?? "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
+        let height = item.height! / 120
+        let width = item.width! / 120
+        let hash = item.blur_hash ?? blur_hash
+        let size = CGSize(width: CGFloat(width), height: CGFloat(height))
+        imageviewItem.sd_setImage(with: URL(string: item.urls?.small ?? "Defult URL"), placeholderImage: UIImage.init(blurHash: hash, size: size))
     }
     
     func setLocalImage(url:URL){

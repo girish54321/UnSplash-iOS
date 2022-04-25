@@ -47,13 +47,12 @@ class HomeCollectionViewController: UICollectionViewController, CHTCollectionVie
         collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
-//        let layout = UICollectionViewFlowLayout()
+        //MARK: CHTCollectionViewWaterfallLayout Start
         let layout = CHTCollectionViewWaterfallLayout()
         layout.itemRenderDirection = .leftToRight
         layout.columnCount = 2
-//        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 4.0, left: 8.0, bottom: 4.0, right: 8.0)
-    
+        layout.sectionInset = UIEdgeInsets(top: 1.0, left: 8.0, bottom: 0,  right: 8.0)
+        //MARK: CHTCollectionViewWaterfallLayout End
         collectionView.register(MyTopCollectionReusableView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
                                withReuseIdentifier: MyTopCollectionReusableView.id)
         
@@ -75,34 +74,12 @@ class HomeCollectionViewController: UICollectionViewController, CHTCollectionVie
         return cell
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        cell.alpha = 0
-//        UIView.animate(withDuration: 0.3,animations: {cell.alpha = 1}, completion: nil)
-//    }
-    
-    // MARK: List Item Size
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1.0, left: 8.0, bottom: 1.0, right: 8.0)
-    }
-    
-    // MARK: List Item Size
+    // MARK: List Item coustom Size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = newPhotos[indexPath.row]
         let h = item.height!  //view.frame.size.width / 2
         return CGSize(width: CGFloat(item.width!), height: CGFloat(h))
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-//    {
-//        let lay = collectionViewLayout as! UICollectionViewFlowLayout
-//
-//        let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-//
-//        return CGSize(width: widthPerItem - 8, height: 240)
-//    }
-    
    // MARK: On List Tap
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = newPhotos[indexPath.item]
@@ -134,6 +111,7 @@ extension HomeCollectionViewController {
             self.collectionView.reloadData()
             self.view.removeBluerLoader()
             self.isPageRefreshing = false
+            print("API call done")
         }
     }
 }

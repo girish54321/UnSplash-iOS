@@ -8,8 +8,9 @@
 import UIKit
 import SDWebImage
 import Alamofire
+import CHTCollectionViewWaterfallLayout
 
-class TopicImagesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
+class TopicImagesCollectionViewController: UICollectionViewController, CHTCollectionViewDelegateWaterfallLayout{
 
     var topicData: TopicResponseElement!
     var itemsArray = [UIColor]()
@@ -17,16 +18,12 @@ class TopicImagesCollectionViewController: UICollectionViewController, UICollect
     var isPageRefreshing : Bool = false
     var newPhotos:[HomeImage] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set CollectionView Delegate & DataSource
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         setUpList()
-        // Register Header
-//        self.collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
-        // Set CollectionView Flow Layout for Header and Items
     }
     
     // MARK: On end
@@ -41,28 +38,19 @@ class TopicImagesCollectionViewController: UICollectionViewController, UICollect
     }
     
     private func setUpList() {
-//        self.collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
-//        self.collectionView.delegate = self
-//        self.collectionView.dataSource = self
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        layout.minimumLineSpacing = 8
-//        layout.minimumInteritemSpacing = 4
-//        self.collectionView.setCollectionViewLayout(layout, animated: true)
-        let flowLayout = CollectionViewFlowLayout()
-        flowLayout.scrollDirection = .vertical
-        flowLayout.itemSize = CGSize(width: 100, height: 100)
-        flowLayout.minimumLineSpacing = 8.0
-        flowLayout.minimumInteritemSpacing = 4.0
-        collectionView.collectionViewLayout = flowLayout
+        //MARK: CHTCollectionViewWaterfallLayout Start
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.itemRenderDirection = .leftToRight
+        layout.columnCount = 2
+        layout.sectionInset = UIEdgeInsets(top: 1.0, left: 8.0, bottom: 0,  right: 8.0)
+        //MARK: CHTCollectionViewWaterfallLayout End
+        collectionView.collectionViewLayout = layout
         // Register Header
         collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Make sure the top constraint of the CollectionView is equal to Superview and not Safe Area
-        // Make the Navigation Bar background transparent
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         // Remove 'Back' text and Title from Navigation Bar
@@ -71,7 +59,6 @@ class TopicImagesCollectionViewController: UICollectionViewController, UICollect
     }
     
     func goToImageInfo(imageData:HomeImage) {
-        print("go 2")
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
             let data: SelectedImageClass = SelectedImageClass(description: imageData.description ?? "NA", urls: imageData.urls!)
             SelectedImageSingleton.selectedSelectedImage.selectedImage = data
@@ -84,7 +71,6 @@ class TopicImagesCollectionViewController: UICollectionViewController, UICollect
     
     // MARK: collectionView
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("2")
         let item = newPhotos[indexPath.item]
         goToImageInfo(imageData: item)
     }
@@ -109,20 +95,11 @@ class TopicImagesCollectionViewController: UICollectionViewController, UICollect
         return cell
     }
     
-     func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8.0, left: 8.0, bottom: 1.0, right: 8.0)
-    }
-    
-     func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let lay = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-        
-        return CGSize(width: widthPerItem - 8, height: 240)
+    // MARK: List Item coustom Size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = newPhotos[indexPath.row]
+        let h = item.height!  //view.frame.size.width / 2
+        return CGSize(width: CGFloat(item.width!), height: CGFloat(h))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

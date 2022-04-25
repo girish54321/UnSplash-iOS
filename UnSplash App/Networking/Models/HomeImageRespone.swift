@@ -10,7 +10,7 @@ struct HomeImage: Decodable {
     var id: String?
     var createdAt, updatedAt, promotedAt: Date?
     var width, height: Int?
-    var color, blurHash, homeImageDescription, altDescription, description: String?
+    var color, blur_hash, homeImageDescription, altDescription, description: String?
     var urls: Urls?
     var links: HomeImageLinks?
     var categories: [String]?
@@ -27,7 +27,7 @@ struct HomeImage: Decodable {
         case updatedAt
         case promotedAt
         case width, height, color
-        case blurHash
+        case blur_hash
         case homeImageDescription
         case altDescription
         case description

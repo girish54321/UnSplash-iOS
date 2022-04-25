@@ -8,10 +8,10 @@
 import UIKit
 import PaginatedTableView
 import Alamofire
-
+import CHTCollectionViewWaterfallLayout
 private let reuseIdentifier = "Cell"
 
-class SearchImageCollectionViewController: UICollectionViewController, UISearchResultsUpdating ,UISearchBarDelegate, UISearchControllerDelegate,UICollectionViewDelegateFlowLayout {
+class SearchImageCollectionViewController: UICollectionViewController, UISearchResultsUpdating ,UISearchBarDelegate, UISearchControllerDelegate, CHTCollectionViewDelegateWaterfallLayout {
     
     var newPhotos:[Result] = []
     var pageNumber : Int = 0
@@ -93,10 +93,12 @@ class SearchImageCollectionViewController: UICollectionViewController, UISearchR
         self.collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 4
+        //MARK: CHTCollectionViewWaterfallLayout Start
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.itemRenderDirection = .leftToRight
+        layout.columnCount = 2
+        layout.sectionInset = UIEdgeInsets(top: 1.0, left: 8.0, bottom: 0,  right: 8.0)
+        //MARK: CHTCollectionViewWaterfallLayout End
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
     
@@ -110,22 +112,12 @@ class SearchImageCollectionViewController: UICollectionViewController, UISearchR
         return cell
     }
     
-    // MARK: For Size
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1.0, left: 8.0, bottom: 1.0, right: 8.0)
+    // MARK: List Item coustom Size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = newPhotos[indexPath.row]
+        let h = item.height!  //view.frame.size.width / 2
+        return CGSize(width: CGFloat(item.width!), height: CGFloat(h))
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        let lay = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-        
-        return CGSize(width: widthPerItem - 8, height: 240)
-    }
-    // MARK: For Size
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = newPhotos[indexPath.item]
