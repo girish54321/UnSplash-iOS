@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyViewClass" customModule="UnSplash_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="Jr4-WT-3DP">
+                    <rect key="frame" x="0.0" y="44" width="414" height="168"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="6Vf-b6-fGK"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Jr4-WT-3DP" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="0yB-Cs-PoV"/>
+                <constraint firstItem="Jr4-WT-3DP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="LpV-kt-Ft9"/>
+                <constraint firstItem="Jr4-WT-3DP" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="rUa-Ue-chx"/>
+                <constraint firstItem="Jr4-WT-3DP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="saf-ei-Evl"/>
+            </constraints>
+            <connections>
+                <outlet property="myViewImagw" destination="Jr4-WT-3DP" id="idU-Oi-x2C"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="76"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Image" width="300" height="168"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

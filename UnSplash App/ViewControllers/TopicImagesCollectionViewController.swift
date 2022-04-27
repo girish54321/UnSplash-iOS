@@ -10,7 +10,7 @@ import SDWebImage
 import Alamofire
 import CHTCollectionViewWaterfallLayout
 
-class TopicImagesCollectionViewController: UICollectionViewController, CHTCollectionViewDelegateWaterfallLayout{
+class TopicImagesCollectionViewController: UICollectionViewController, CHTCollectionViewDelegateWaterfallLayout {
 
     var topicData: TopicResponseElement!
     var itemsArray = [UIColor]()
@@ -46,7 +46,9 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
         //MARK: CHTCollectionViewWaterfallLayout End
         collectionView.collectionViewLayout = layout
         // Register Header
-        collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
+        collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MyView")
+//        let nib = UINib(nibName: "MyView", bundle: nil)
+//        self.collectionView?.register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MyView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,9 +78,10 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? StretchyCollectionHeaderView {
+        if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MyView", for: indexPath) as? StretchyCollectionHeaderView {
             // Add Image to the Header
             headerView.imageView.sd_setImage(with: URL(string: topicData.coverPhoto?.urls?.small ?? "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
+//            headerView.imageView.imageWithInsets(insetDimen: 22)
             return headerView
         }
         return UICollectionReusableView()
@@ -102,10 +105,15 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
         return CGSize(width: CGFloat(item.width!), height: CGFloat(h))
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.collectionView.frame.size.width, height: 250) // for image herder toolbar
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: self.collectionView.frame.size.width, height: 250) // for image herder toolbar
+//    }
     // MARK: collectionView
+    
+    //MARK: Heiht
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, heightForHeaderIn section: Int) -> CGFloat {
+        return CGFloat(250)
+    }
     
 }
 
