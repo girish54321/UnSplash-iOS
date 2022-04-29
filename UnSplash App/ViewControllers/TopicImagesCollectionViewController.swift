@@ -42,13 +42,10 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
         let layout = CHTCollectionViewWaterfallLayout()
         layout.itemRenderDirection = .leftToRight
         layout.columnCount = 2
-        layout.sectionInset = UIEdgeInsets(top: 1.0, left: 8.0, bottom: 0,  right: 8.0)
+        layout.sectionInset = UIEdgeInsets(top: 16.0, left: 8.0, bottom: 0,  right: 8.0)
         //MARK: CHTCollectionViewWaterfallLayout End
         collectionView.collectionViewLayout = layout
-        // Register Header
         collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MyView")
-//        let nib = UINib(nibName: "MyView", bundle: nil)
-//        self.collectionView?.register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MyView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +78,6 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
         if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MyView", for: indexPath) as? StretchyCollectionHeaderView {
             // Add Image to the Header
             headerView.imageView.sd_setImage(with: URL(string: topicData.coverPhoto?.urls?.small ?? "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
-//            headerView.imageView.imageWithInsets(insetDimen: 22)
             return headerView
         }
         return UICollectionReusableView()
@@ -104,13 +100,8 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
         let h = item.height!  //view.frame.size.width / 2
         return CGSize(width: CGFloat(item.width!), height: CGFloat(h))
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: self.collectionView.frame.size.width, height: 250) // for image herder toolbar
-//    }
-    // MARK: collectionView
-    
-    //MARK: Heiht
+
+    //MARK: Header height
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, heightForHeaderIn section: Int) -> CGFloat {
         return CGFloat(250)
     }
