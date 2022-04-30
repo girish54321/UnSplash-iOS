@@ -7,8 +7,9 @@
 
 import UIKit
 import Alamofire
+import CHTCollectionViewWaterfallLayout
 
-class TopicsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class TopicsCollectionViewController: UICollectionViewController, CHTCollectionViewDelegateWaterfallLayout {
 
     var topicsData:[TopicResponseElement] = []
     override func viewDidLoad() {
@@ -18,7 +19,7 @@ class TopicsCollectionViewController: UICollectionViewController, UICollectionVi
     }
     
     func goToTopicImages(imageData:TopicResponseElement) {
-        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TopicImagesViewController") as? TopicImagesViewController {
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TopicImagesCollectionViewController") as? TopicImagesCollectionViewController {
             viewController.topicData = imageData
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
@@ -30,10 +31,12 @@ class TopicsCollectionViewController: UICollectionViewController, UICollectionVi
         collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 4
+        //MARK: CHTCollectionViewWaterfallLayout Start
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.itemRenderDirection = .leftToRight
+        layout.columnCount = 2
+        layout.sectionInset = UIEdgeInsets(top: 1.0, left: 8.0, bottom: 0,  right: 8.0)
+        //MARK: CHTCollectionViewWaterfallLayout End
         collectionView.setCollectionViewLayout(layout, animated: true)
     }
     
@@ -47,22 +50,13 @@ class TopicsCollectionViewController: UICollectionViewController, UICollectionVi
         return cell
     }
     
-    //  For Size
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1.0, left: 8.0, bottom: 1.0, right: 8.0)
+    // MARK: List Item coustom Size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = topicsData[indexPath.row]
+        let height = item.coverPhoto?.height ?? 100
+        let width = item.coverPhoto?.width ?? 100
+        return CGSize(width: CGFloat(width), height: CGFloat(height))
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        let lay = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-        
-        return CGSize(width: widthPerItem - 8, height: 240)
-    }
-    //  For Size
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("item at \(indexPath.section)/\(indexPath.item) tapped")

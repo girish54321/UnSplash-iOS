@@ -7,8 +7,9 @@
 
 import UIKit
 import Alamofire
+import CHTCollectionViewWaterfallLayout
 
-class HotCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HotCollectionViewController: UICollectionViewController, CHTCollectionViewDelegateWaterfallLayout {
 
     var newPhotos:[HomeImage] = []
     var pageNumber : Int = 0
@@ -35,16 +36,17 @@ class HotCollectionViewController: UICollectionViewController, UICollectionViewD
         collectionView.register(UICollectionViewCell.self,forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 4
+        //MARK: CHTCollectionViewWaterfallLayout Start
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.itemRenderDirection = .leftToRight
+        layout.columnCount = 2
+        layout.sectionInset = UIEdgeInsets(top: 1.0, left: 8.0, bottom: 0,  right: 8.0)
+        //MARK: CHTCollectionViewWaterfallLayout End
         collectionView.setCollectionViewLayout(layout, animated: true)
     }
     
     func goToImageInfo(imageData:HomeImage) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
-            viewController.imageInfo = imageData
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
             }
@@ -61,26 +63,12 @@ class HotCollectionViewController: UICollectionViewController, UICollectionViewD
         return cell
     }
     
-    //  For Size
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = newPhotos[indexPath.item]
-        goToImageInfo(imageData: item)
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1.0, left: 8.0, bottom: 1.0, right: 8.0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        let lay = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let widthPerItem = collectionView.frame.width / 2 - lay.minimumInteritemSpacing
-        
-        return CGSize(width: widthPerItem - 8, height: 240)
-    }
-    //  For Size
+    // MARK: List Item coustom Size
+      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+          let item = newPhotos[indexPath.row]
+          let h = item.height!  //view.frame.size.width / 2
+          return CGSize(width: CGFloat(item.width!), height: CGFloat(h))
+      }
 }
 
 // MARK: - Alamofire API CAll

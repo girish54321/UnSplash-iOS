@@ -12,8 +12,7 @@ import SDDownloadManager
 import FittedSheets
 
 class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentInteractionControllerDelegate {
-    
-    var imageInfo:HomeImage!
+ 
     @IBOutlet weak var infoImageView: UIImageView!
     var fileData: NSMutableData = NSMutableData()
     var dataTask: URLSessionDataTask?
@@ -74,10 +73,6 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         present(activityController, animated: true) {
             print("presented")
         }
-    }
-    
-    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-        return self
     }
     
     func showDownloadOptionModal() {

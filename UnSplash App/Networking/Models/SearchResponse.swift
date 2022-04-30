@@ -17,7 +17,7 @@ struct Result : Decodable {
     var createdAt, updatedAt: Date?
     var promotedAt: Date?
     var width, height: Int?
-    var color, blurHash, resultDescription, altDescription: String?
+    var color, blur_hash, resultDescription, altDescription: String?
     var urls: Urls?
     var links: ResultLinks?
     var categories: [String]
