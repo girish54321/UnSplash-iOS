@@ -62,9 +62,16 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         } catch {
             print("Error loading image : \(error)")
         }
+
         let activityController = UIActivityViewController(activityItems: [imageData!,], applicationActivities: nil)
         activityController.completionWithItemsHandler = { (nil, completed, _, error) in
             if completed {
+//                UIHelper().showAlertAction(title: "Image Saved", message: "", actionClosure: {
+//                    print("done")
+//                })
+                UIHelper().showAlertAction(title: "Image Saved", message: "Image is saved to you phone you can check now.", vc: self, actionClosure: {
+                    print("Ok Taped")
+                })
                 print("completed")
             } else {
                 print("canceled")

@@ -102,7 +102,6 @@ extension HomeCollectionViewController {
         ]
         AF.request(AppConst.baseurl+AppConst.photoUrl,method: .get,parameters: parameters).validate().responseDecodable(of: [HomeImage].self) { (response) in
             guard let data = response.value else {
-                print("Error")
                 self.view.removeBluerLoader()
                 self.isPageRefreshing = false
                 return
@@ -111,7 +110,6 @@ extension HomeCollectionViewController {
             self.collectionView.reloadData()
             self.view.removeBluerLoader()
             self.isPageRefreshing = false
-            print("API call done")
         }
     }
 }

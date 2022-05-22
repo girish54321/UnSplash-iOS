@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct DownloadHelper {
-    static func savePdf(urlString:String, fileName:String,vc: UIViewController) {
+    static func saveImage(urlString:String, fileName:String,vc: UIViewController) {
         DispatchQueue.main.async {
             let url = URL(string: urlString)
             let pdfData = try? Data.init(contentsOf: url!)
@@ -18,13 +18,12 @@ struct DownloadHelper {
             let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
             do {
                 try pdfData?.write(to: actualPath, options: .atomic)
-                print("pdf successfully saved!")
+                print("successfully saved!")
                 vc.view.removeBluerLoader()
                 UIHelper.loadLocalImages()
                 Alert.showDonlodDoneAlert(on: vc)
-                print(actualPath)
             } catch {
-                print("Pdf could not be saved")
+                print("could not be saved")
             }
         }
     }

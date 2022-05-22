@@ -15,17 +15,16 @@ struct UIHelper {
             let edit = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in onDelete(index)
             }
             let share = UIAction(title: "Share", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in
-                print("edit button clicked")
             }
             return UIMenu(title: "Options", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [edit,share])
         }
         return context
     }
     
-    func showAlertAction(title: String, message: String, actionClosure: @escaping () -> Void){
+    func showAlertAction(title: String, message: String,vc: UIViewController, actionClosure: @escaping () -> Void){
       let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
       alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: {(action: UIAlertAction!) in actionClosure()}))
-//      self.present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.async { vc.present(alertController, animated: true) }
     }
 
     static func showSearchButton(action: Selector ,navigationItem:UINavigationItem){
@@ -48,7 +47,6 @@ struct UIHelper {
                 myCustomViewController.savedImages = directoryContents
                 if(myCustomViewController.savedImageList != nil){
                     myCustomViewController.savedImageList.reloadData()
-                    print("saved ald reload")
                 }
             }
         } catch {

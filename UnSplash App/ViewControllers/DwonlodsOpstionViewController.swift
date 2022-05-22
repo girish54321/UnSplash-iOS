@@ -40,7 +40,7 @@ extension DownloadsOptionsViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let video = op[indexPath.row]
         self.view.showBlurLoader()
-        DownloadHelper.savePdf(urlString: video.url, fileName: "", vc: self)
+        DownloadHelper.saveImage(urlString: video.url, fileName: "", vc: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
