@@ -12,7 +12,7 @@ import SDDownloadManager
 import FittedSheets
 
 class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentInteractionControllerDelegate {
- 
+    
     @IBOutlet weak var infoImageView: UIImageView!
     var fileData: NSMutableData = NSMutableData()
     var dataTask: URLSessionDataTask?
@@ -54,32 +54,61 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
         }
     }
     
+    @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        print("Save finished!")
+        if error != nil {
+            print("Error is very bad")
+            //            errorsHandler?(error)
+        } else {
+            print("All good")
+            //            successHandler?()
+            UIHelper().showAlertAction(title: "Image Saved", message: "Image is saved to you phone you can check now.", vc: self, actionClosure: {
+                print("Ok Taped")
+            })
+        }
+    }
+    
     func saveToStorage() {
-        var imageData : UIImage!;
-        do {
-            let imageUrl = try Data(contentsOf: localImageUrl)
-            imageData =  UIImage(data: imageUrl)
-        } catch {
-            print("Error loading image : \(error)")
-        }
-
-        let activityController = UIActivityViewController(activityItems: [imageData!,], applicationActivities: nil)
-        activityController.completionWithItemsHandler = { (nil, completed, _, error) in
-            if completed {
-//                UIHelper().showAlertAction(title: "Image Saved", message: "", actionClosure: {
-//                    print("done")
-//                })
-                UIHelper().showAlertAction(title: "Image Saved", message: "Image is saved to you phone you can check now.", vc: self, actionClosure: {
-                    print("Ok Taped")
-                })
-                print("completed")
-            } else {
-                print("canceled")
-            }
-        }
-        present(activityController, animated: true) {
-            print("presented")
-        }
+        
+        let smallButton = UIHelper().makeUIAlertButton(title: "Small", style: UIAlertAction.Style.default, actionFunction: {
+            print("Small")
+        })
+        let xLButton = UIHelper().makeUIAlertButton(title: "XL", style: UIAlertAction.Style.default, actionFunction: {
+            print("XL")
+        })
+        let xxLButton = UIHelper().makeUIAlertButton(title: "XXL", style: UIAlertAction.Style.default, actionFunction: {
+            print("XXL")
+        })
+        
+        UIHelper().showBootmSheet(title: "Title", message: "Some Message", vc: self, actionsList: [smallButton,xLButton,xxLButton])
+        
+        //        var imageData : UIImage!;
+        //        do {
+        //            let imageUrl = try Data(contentsOf: localImageUrl)
+        //            imageData =  UIImage(data: imageUrl)
+        //        } catch {
+        //            print("Error loading image : \(error)")
+        //        }
+        //        UIImageWriteToSavedPhotosAlbum(imageData, self, #selector(saveCompleted), nil)
+        
+        
+        //        let activityController = UIActivityViewController(activityItems: [imageData!,], applicationActivities: nil)
+        //        activityController.completionWithItemsHandler = { (nil, completed, _, error) in
+        //            if completed {
+        ////                UIHelper().showAlertAction(title: "Image Saved", message: "", actionClosure: {
+        ////                    print("done")
+        ////                })
+        //                UIHelper().showAlertAction(title: "Image Saved", message: "Image is saved to you phone you can check now.", vc: self, actionClosure: {
+        //                    print("Ok Taped")
+        //                })
+        //                print("completed")
+        //            } else {
+        //                print("canceled")
+        //            }
+        //        }
+        //        present(activityController, animated: true) {
+        //            print("presented")
+        //        }
     }
     
     func showDownloadOptionModal() {

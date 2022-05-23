@@ -21,7 +21,9 @@ struct DownloadHelper {
                 print("successfully saved!")
                 vc.view.removeBluerLoader()
                 UIHelper.loadLocalImages()
-                Alert.showDonlodDoneAlert(on: vc)
+                UIHelper().showAlertAction(title: "Image Saved", message: "You can see your new image on Saved Tab", vc: vc, actionClosure: {
+                    print("Ok Taped")
+                })
             } catch {
                 print("could not be saved")
             }

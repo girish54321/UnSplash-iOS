@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct UIHelper {
-//    MARK- :Context Menus
+    //    MARK- :Context Menus
     static func configureContextMenu(index: Int,onDelete: @escaping (_ index:Int) -> Void) -> UIContextMenuConfiguration{
         let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
             let edit = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in onDelete(index)
@@ -22,11 +22,31 @@ struct UIHelper {
     }
     
     func showAlertAction(title: String, message: String,vc: UIViewController, actionClosure: @escaping () -> Void){
-      let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-      alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: {(action: UIAlertAction!) in actionClosure()}))
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: {(action: UIAlertAction!) in actionClosure()}))
         DispatchQueue.main.async { vc.present(alertController, animated: true) }
     }
-
+    
+    func showBootmSheet(title: String, message: String,vc: UIViewController,actionsList: [UIAlertAction]){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        for actions in actionsList {
+            alertController.addAction(actions)
+        }
+        
+        let cancelButton = makeUIAlertButton(title: "Cancel", style: UIAlertAction.Style.cancel, actionFunction: {
+            print("Cancel taped")
+        })
+        
+        alertController.addAction(cancelButton)
+        
+        DispatchQueue.main.async { vc.present(alertController, animated: true) }
+    }
+    
+    func makeUIAlertButton(title: String, style:UIAlertAction.Style ,actionFunction: @escaping () -> Void) -> UIAlertAction {
+        let actionButton = UIAlertAction(title: title, style: style, handler: {(action: UIAlertAction!) in actionFunction()})
+        return actionButton
+    }
+    
     static func showSearchButton(action: Selector ,navigationItem:UINavigationItem){
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "magnifyingglass"),
@@ -51,7 +71,7 @@ struct UIHelper {
             }
         } catch {
             print(error)
-           
+            
         }
         
     }
