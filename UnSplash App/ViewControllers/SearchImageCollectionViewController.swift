@@ -125,8 +125,6 @@ class SearchImageCollectionViewController: UICollectionViewController, UISearchR
     }
 }
 
-
-
 // MARK: - Alamofire API CAll
 extension SearchImageCollectionViewController {
     func getSearchPhotos(page:Int) {

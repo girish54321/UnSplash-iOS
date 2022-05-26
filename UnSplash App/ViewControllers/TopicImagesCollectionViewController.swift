@@ -97,8 +97,8 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
     // MARK: List Item coustom Size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = newPhotos[indexPath.row]
-        let h = item.height!  //view.frame.size.width / 2
-        return CGSize(width: CGFloat(item.width!), height: CGFloat(h))
+        let height = item.height!  //view.frame.size.width / 2
+        return CGSize(width: CGFloat(item.width!), height: CGFloat(height))
     }
 
     //MARK: Header height

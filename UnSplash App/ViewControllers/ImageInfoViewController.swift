@@ -66,45 +66,27 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
     }
     
     func saveToStorage() {
-        
-        //        var imageData : UIImage!;
-        //        do {
-        //            let imageUrl = try Data(contentsOf: localImageUrl)
-        //            imageData =  UIImage(data: imageUrl)
-        //        } catch {
-        //            print("Error loading image : \(error)")
-        //        }
-        //        UIImageWriteToSavedPhotosAlbum(imageData, self, #selector(saveCompleted), nil)
-        
-        
-        //        let activityController = UIActivityViewController(activityItems: [imageData!,], applicationActivities: nil)
-        //        activityController.completionWithItemsHandler = { (nil, completed, _, error) in
-        //            if completed {
-        ////                UIHelper().showAlertAction(title: "Image Saved", message: "", actionClosure: {
-        ////                    print("done")
-        ////                })
-        //                UIHelper().showAlertAction(title: "Image Saved", message: "Image is saved to you phone you can check now.", vc: self, actionClosure: {
-        //                    print("Ok Taped")
-        //                })
-        //                print("completed")
-        //            } else {
-        //                print("canceled")
-        //            }
-        //        }
-        //        present(activityController, animated: true) {
-        //            print("presented")
-        //        }
+        let imageData : UIImage = DownloadHelper().createUIImage(url: localImageUrl.absoluteString)
+        DownloadHelper().shareImage(imageData: [imageData], vc: self)
     }
     
-    func createUIImage(url: String) -> UIImage {
-        var imageData : UIImage!;
-        do {
-            let imageUrl = try Data(contentsOf: URL(string: url)!)
-            imageData =  UIImage(data: imageUrl)
-        } catch {
-            print("Error loading image : \(error)")
-        }
-        return imageData
+   func askWhereToSave() {
+        let cameraButton = UIHelper().makeUIAlertButton(title: "Camera Roll", style: UIAlertAction.Style.default, actionFunction: {
+            self.showDownloadOption(pathType: imagePathType.cameraRoll)
+        })
+        cameraButton.setValue(UIImage(systemName: "photo"), forKey: "image")
+       
+        let appStorageButton = UIHelper().makeUIAlertButton(title: "App Storage", style: UIAlertAction.Style.default, actionFunction: {
+            self.showDownloadOption(pathType: imagePathType.appStorage)
+        })
+       appStorageButton.setValue(UIImage(systemName: "iphone"), forKey: "image")
+       
+        let phoneStorageButton = UIHelper().makeUIAlertButton(title: "Save to Files", style: UIAlertAction.Style.default, actionFunction: { [self] in
+            self.showDownloadOption(pathType: imagePathType.phoneStorage)
+        })
+       phoneStorageButton.setValue(UIImage(systemName: "folder"), forKey: "image")
+       
+        UIHelper().showBootmSheet(title: selectedImage.description, message: "Select where to save image", vc: self, actionsList: [cameraButton,appStorageButton,phoneStorageButton])
     }
     
     func showDownloadOption(pathType:imagePathType) {
@@ -127,45 +109,20 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
                     DownloadHelper.saveImage(urlString: imageURLLocal, fileName: "", vc: self)
                 }
                 if(pathType == imagePathType.phoneStorage){
-                    let imageData : UIImage = self.createUIImage(url: imageURLLocal)
-                    
-                    let activityController = UIActivityViewController(activityItems: [imageData,], applicationActivities: nil)
-                    activityController.completionWithItemsHandler = { (nil, completed, _, error) in
-                        if completed {
-                            UIHelper().showAlertAction(title: "Image Saved", message: "Image is saved to you phone you can check now.", vc: self, actionClosure: {
-                                print("Ok Taped")
-                            })
-                            print("completed")
-                        } else {
-                            print("canceled")
-                        }
-                    }
-                    self.present(activityController, animated: true) {
-                        print("presented")
-                    }
+                    let imageData : UIImage = DownloadHelper().createUIImage(url: imageURLLocal)
+                    DownloadHelper().shareImage(imageData: [imageData], vc: self)
                 }
                 if(pathType == imagePathType.cameraRoll){
-                    let imageData : UIImage = self.createUIImage(url: imageURLLocal)
+                    let imageData : UIImage = DownloadHelper().createUIImage(url: imageURLLocal)
                     UIImageWriteToSavedPhotosAlbum(imageData, self, #selector(self.saveCompleted), nil)
                 }
             })
             actionsButtons.append(urlButton)
         }
         
-        UIHelper().showBootmSheet(title: selectedImage.description, message: "Select where to save image", vc: self, actionsList: actionsButtons)
+        UIHelper().showBootmSheet(title: selectedImage.description, message: "Select image quality", vc: self, actionsList: actionsButtons)
     }
-    func askWhereToSave() {
-        let cameraButton = UIHelper().makeUIAlertButton(title: "Camera Roll", style: UIAlertAction.Style.default, actionFunction: {
-            self.showDownloadOption(pathType: imagePathType.cameraRoll)
-        })
-        let appStorageButton = UIHelper().makeUIAlertButton(title: "App Storage", style: UIAlertAction.Style.default, actionFunction: {
-            self.showDownloadOption(pathType: imagePathType.appStorage)
-        })
-        let phoneStorageButton = UIHelper().makeUIAlertButton(title: "Phone Storge", style: UIAlertAction.Style.default, actionFunction: { [self] in
-            self.showDownloadOption(pathType: imagePathType.phoneStorage)
-        })
-        UIHelper().showBootmSheet(title: selectedImage.description, message: "Select where to save image", vc: self, actionsList: [cameraButton,appStorageButton,phoneStorageButton])
-    }
+
     
     @IBAction func downloadButtonOnClick(_ sender: Any) {
         if(localFile){
