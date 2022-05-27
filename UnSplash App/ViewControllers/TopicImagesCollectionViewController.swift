@@ -11,7 +11,7 @@ import Alamofire
 import CHTCollectionViewWaterfallLayout
 
 class TopicImagesCollectionViewController: UICollectionViewController, CHTCollectionViewDelegateWaterfallLayout {
-
+    
     var topicData: TopicResponseElement!
     var itemsArray = [UIColor]()
     var pageNumber : Int = 0
@@ -45,7 +45,9 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
         layout.sectionInset = UIEdgeInsets(top: 16.0, left: 8.0, bottom: 0,  right: 8.0)
         //MARK: CHTCollectionViewWaterfallLayout End
         collectionView.collectionViewLayout = layout
-        collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MyView")
+        
+        // Register Header
+        collectionView.register(StretchyCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,14 +76,6 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
         goToImageInfo(imageData: item)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MyView", for: indexPath) as? StretchyCollectionHeaderView {
-            // Add Image to the Header
-            headerView.imageView.sd_setImage(with: URL(string: topicData.coverPhoto?.urls?.small ?? "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
-            return headerView
-        }
-        return UICollectionReusableView()
-    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return newPhotos.count
@@ -100,12 +94,19 @@ class TopicImagesCollectionViewController: UICollectionViewController, CHTCollec
         let height = item.height!  //view.frame.size.width / 2
         return CGSize(width: CGFloat(item.width!), height: CGFloat(height))
     }
-
-    //MARK: Header height
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, heightForHeaderIn section: Int) -> CGFloat {
-        return CGFloat(250)
+    
+    // Header
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? StretchyCollectionHeaderView {
+            headerView.imageView.sd_setImage(with: URL(string: topicData.coverPhoto?.urls?.small ?? "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"))
+            return headerView
+        }
+        return UICollectionReusableView()
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, heightForHeaderIn section: Int) -> CGFloat {
+        return CGFloat(200)
+    }
 }
 
 // MARK: - Alamofire API CAll

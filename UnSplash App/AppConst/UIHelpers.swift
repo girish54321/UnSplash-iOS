@@ -38,7 +38,7 @@ struct UIHelper {
         })
         
         alertController.addAction(cancelButton)
-        
+        alertController.view.tintColor = .purple
         DispatchQueue.main.async { vc.present(alertController, animated: true) }
     }
     
