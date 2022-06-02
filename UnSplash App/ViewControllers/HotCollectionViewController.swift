@@ -45,8 +45,11 @@ class HotCollectionViewController: UICollectionViewController, CHTCollectionView
         collectionView.setCollectionViewLayout(layout, animated: true)
     }
     
+    // MARK: On Tap Function
     func goToImageInfo(imageData:HomeImage) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageInfoViewController") as? ImageInfoViewController {
+            let data: SelectedImageClass = SelectedImageClass(description: imageData.description ?? "NA", urls: imageData.urls!)
+            SelectedImageSingleton.selectedSelectedImage.selectedImage = data
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
             }
@@ -69,6 +72,12 @@ class HotCollectionViewController: UICollectionViewController, CHTCollectionView
           let h = item.height!  //view.frame.size.width / 2
           return CGSize(width: CGFloat(item.width!), height: CGFloat(h))
       }
+    
+    // MARK: On List Tap
+     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         let item = newPhotos[indexPath.item]
+         goToImageInfo(imageData: item)
+     }
 }
 
 // MARK: - Alamofire API CAll

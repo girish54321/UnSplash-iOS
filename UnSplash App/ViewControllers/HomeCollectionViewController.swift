@@ -52,13 +52,6 @@ class HomeCollectionViewController: UICollectionViewController, CHTCollectionVie
         layout.itemRenderDirection = .leftToRight
         layout.columnCount = 2
         layout.sectionInset = UIEdgeInsets(top: 1.0, left: 8.0, bottom: 0,  right: 8.0)
-        //MARK: CHTCollectionViewWaterfallLayout End
-        collectionView.register(MyTopCollectionReusableView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader,
-                               withReuseIdentifier: MyTopCollectionReusableView.id)
-        
-        collectionView.register(MyBootomCollectionReusableView.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionFooter,
-                               withReuseIdentifier: MyBootomCollectionReusableView.id)
-        
         collectionView.setCollectionViewLayout(layout, animated: true)
     }
     
@@ -102,7 +95,6 @@ extension HomeCollectionViewController {
         ]
         AF.request(AppConst.baseurl+AppConst.photoUrl,method: .get,parameters: parameters).validate().responseDecodable(of: [HomeImage].self) { (response) in
             guard let data = response.value else {
-                print("Error")
                 self.view.removeBluerLoader()
                 self.isPageRefreshing = false
                 return
@@ -111,7 +103,6 @@ extension HomeCollectionViewController {
             self.collectionView.reloadData()
             self.view.removeBluerLoader()
             self.isPageRefreshing = false
-            print("API call done")
         }
     }
 }

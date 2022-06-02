@@ -6,7 +6,7 @@
 //
 
 struct AppConst {
-
+    
     static let baseurl = "https://api.unsplash.com/"
     static let photoUrl = "photos"
     static let topics = "topics"
@@ -14,4 +14,10 @@ struct AppConst {
     static let search = "search/photos"
 }
 
-    
+enum imagePathType {
+    case cameraRoll
+    case appStorage
+    case phoneStorage
+}
+
+

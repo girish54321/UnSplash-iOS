@@ -59,7 +59,6 @@ class TopicsCollectionViewController: UICollectionViewController, CHTCollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("item at \(indexPath.section)/\(indexPath.item) tapped")
         let item = topicsData[indexPath.item]
         goToTopicImages(imageData: item)
     }
@@ -77,7 +76,6 @@ extension TopicsCollectionViewController {
         ]
         AF.request(AppConst.baseurl+AppConst.topics,method: .get,parameters: parameters).validate().responseDecodable(of: [TopicResponseElement].self) { (response) in
             guard let data = response.value else {
-                print(response)
                 print("Topic Error")
                 return
             }
