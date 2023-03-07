@@ -46,33 +46,13 @@ struct UIHelper {
         return actionButton
     }
     
-    static func showSearchButton(action: Selector ,navigationItem:UINavigationItem){
+    func showSearchButton(action: Selector ,navigationItem:UINavigationItem){
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "magnifyingglass"),
             style: .done,
             target: self,
             action: action
         )
-    }
-    
-    static func loadLocalImages(){
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        do {
-            // Get the directory contents urls (including subfolders urls)
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl!, includingPropertiesForKeys: nil)
-            let myCustomViewController: SavedViewController = SavedViewController(nibName: nil, bundle: nil)
-            if(myCustomViewController.savedImages != nil){
-                myCustomViewController.savedImages.removeAll()
-                myCustomViewController.savedImages = directoryContents
-                if(myCustomViewController.savedImageList != nil){
-                    myCustomViewController.savedImageList.reloadData()
-                }
-            }
-        } catch {
-            print(error)
-            
-        }
-        
     }
 }
 

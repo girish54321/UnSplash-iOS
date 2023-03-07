@@ -128,6 +128,7 @@ class SearchImageCollectionViewController: UICollectionViewController, UISearchR
 // MARK: - Alamofire API CAll
 extension SearchImageCollectionViewController {
     func getSearchPhotos(page:Int) {
+        print("Do APi Search")
         if(newPhotos.isEmpty){
             self.view.showBlurLoader()
         }
@@ -139,12 +140,15 @@ extension SearchImageCollectionViewController {
             "per_page":"30"
         ]
         AF.request(AppConst.baseurl+AppConst.search,method: .get,parameters: parameters).validate().responseDecodable(of: SearchImageResponse.self) { (response) in
+            print(response.error)
             guard let data = response.value else {
+                print("we hav data NO")
                 self.view.removeBluerLoader()
                 self.isPageRefreshing = false
                 return
             }
             self.newPhotos.append(contentsOf: data.results!)
+            print(data.results![0].altDescription)
             self.collectionView.reloadData()
             self.view.removeBluerLoader()
             self.isPageRefreshing = false

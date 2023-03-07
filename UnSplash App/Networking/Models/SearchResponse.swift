@@ -20,7 +20,7 @@ struct Result : Decodable {
     var color, blur_hash, resultDescription, altDescription: String?
     var urls: Urls?
     var links: ResultLinks?
-    var categories: [String]
+//    var categories: [String]
     var likes: Int?
     var likedByUser: Bool?
     var currentUserCollections:  [String?]?

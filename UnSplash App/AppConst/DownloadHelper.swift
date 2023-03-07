@@ -13,14 +13,14 @@ struct DownloadHelper {
         DispatchQueue.main.async {
             let url = URL(string: urlString)
             let pdfData = try? Data.init(contentsOf: url!)
-            let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+            let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL //userDomainMask
             let pdfNameFromUrl = "\(UUID().uuidString).png"
             let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
             do {
                 try pdfData?.write(to: actualPath, options: .atomic)
                 print("successfully saved!")
                 vc.view.removeBluerLoader()
-                UIHelper.loadLocalImages()
+                FileReader().loadLocalImages()
                 UIHelper().showAlertAction(title: "Image Saved", message: "You can see your new image on Saved Tab", vc: vc, actionClosure: {
                     print("Ok Taped")
                 })

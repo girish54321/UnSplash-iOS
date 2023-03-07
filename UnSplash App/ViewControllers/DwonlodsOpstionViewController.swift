@@ -30,13 +30,9 @@ class DownloadsOptionsViewController: UIViewController {
     }
     
     @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        print("Save finished!")
         if error != nil {
             print("Error is very bad")
-            //            errorsHandler?(error)
         } else {
-            print("All good")
-            //            successHandler?()
             UIHelper().showAlertAction(title: "Image Saved", message: "Image is saved to you phone you can check now.", vc: self, actionClosure: {
                 print("Ok Taped")
             })
@@ -53,35 +49,10 @@ extension DownloadsOptionsViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let video = op[indexPath.row]
+        UIHelper().showAlertAction(title: "Image Saved", message: "Image is saved to you phone you can check now.", vc: self, actionClosure: {
+            print("Ok Taped")
+        })
         
-        
-        //        self.view.showBlurLoader()
-        //        DownloadHelper.saveImage(urlString: video.url, fileName: "", vc: self)
-        //        var imageData : UIImage!;
-        //        do {
-        //            let imageUrl = try Data(contentsOf: URL(string: video.url)!)
-        //            imageData =  UIImage(data: imageUrl)
-        //        } catch {
-        //            print("Error loading image : \(error)")
-        //        }
-        //        UIImageWriteToSavedPhotosAlbum(imageData, self, #selector(saveCompleted), nil)
-        
-        //        let activityController = UIActivityViewController(activityItems: [imageData!,], applicationActivities: nil)
-        //        activityController.completionWithItemsHandler = { (nil, completed, _, error) in
-        //            if completed {
-                        UIHelper().showAlertAction(title: "Image Saved", message: "Image is saved to you phone you can check now.", vc: self, actionClosure: {
-                            print("Ok Taped")
-                        })
-        //                print("completed")
-        //            } else {
-        //                print("canceled")
-        //            }
-        //        }
-        //        present(activityController, animated: true) {
-        //            print("presented")
-        //        }
-        // 1
-       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

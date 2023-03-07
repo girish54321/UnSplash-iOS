@@ -10,7 +10,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class SavedCollectionViewController: UICollectionViewController {
-
+    
     var savedImages :[URL] = []
     private let refreshControl = UIRefreshControl()
     let fileManager = FileManager.default
@@ -18,13 +18,13 @@ class SavedCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("im the one")
         setUpImageList()
         loadSavedImages()
     }
     
     @objc func loadSavedImages(){
         do {
-            // Get the directory contents urls (including subfolders urls)
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
             savedImages.removeAll()
             savedImages = directoryContents

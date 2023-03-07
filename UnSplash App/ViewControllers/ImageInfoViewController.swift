@@ -106,13 +106,16 @@ class ImageInfoViewController: UIViewController, URLSessionDelegate, UIDocumentI
                 imageURLLocal = urls.url
                 
                 if(pathType == imagePathType.appStorage){
+                    print("App Storage")
                     DownloadHelper.saveImage(urlString: imageURLLocal, fileName: "", vc: self)
                 }
                 if(pathType == imagePathType.phoneStorage){
+                    print("phoneStorage")
                     let imageData : UIImage = DownloadHelper().createUIImage(url: imageURLLocal)
                     DownloadHelper().shareImage(imageData: [imageData], vc: self)
                 }
                 if(pathType == imagePathType.cameraRoll){
+                    print("cameraRolle")
                     let imageData : UIImage = DownloadHelper().createUIImage(url: imageURLLocal)
                     UIImageWriteToSavedPhotosAlbum(imageData, self, #selector(self.saveCompleted), nil)
                 }
