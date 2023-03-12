@@ -34,7 +34,6 @@
 		F47EF7C12791CC7A0022BE15 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47EF7C02791CC7A0022BE15 /* SearchResponse.swift */; };
 		F48E06FC2704295200DA4D51 /* TopicImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E06FB2704295200DA4D51 /* TopicImageItem.swift */; };
 		F48E06FE27042B0E00DA4D51 /* TopicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E06FD27042B0E00DA4D51 /* TopicResponse.swift */; };
-		F499518727131F500025CD37 /* DwonlodsOpstionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F499518627131F500025CD37 /* DwonlodsOpstionViewController.swift */; };
 		F4A9FC7127946A4600447873 /* SearchImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9FC7027946A4600447873 /* SearchImageCollectionViewController.swift */; };
 		F4C60B5728199013009E4662 /* MyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C60B5628199013009E4662 /* MyView.xib */; };
 		F4C60B59281990F7009E4662 /* MyViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C60B58281990F7009E4662 /* MyViewClass.swift */; };
@@ -77,7 +76,6 @@
 		F47EF7C02791CC7A0022BE15 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		F48E06FB2704295200DA4D51 /* TopicImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicImageItem.swift; sourceTree = "<group>"; };
 		F48E06FD27042B0E00DA4D51 /* TopicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicResponse.swift; sourceTree = "<group>"; };
-		F499518627131F500025CD37 /* DwonlodsOpstionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwonlodsOpstionViewController.swift; sourceTree = "<group>"; };
 		F4A9FC7027946A4600447873 /* SearchImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageCollectionViewController.swift; sourceTree = "<group>"; };
 		F4C60B5628199013009E4662 /* MyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyView.xib; sourceTree = "<group>"; };
 		F4C60B58281990F7009E4662 /* MyViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewClass.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 				F4DC42DA27899AA5009A1BE7 /* TopicsCollectionViewController.swift */,
 				F45FD26327D3737D003635EC /* TopicImagesCollectionViewController.swift */,
 				F453BBF927030D80006EF654 /* ImageInfoViewController.swift */,
-				F499518627131F500025CD37 /* DwonlodsOpstionViewController.swift */,
 				F4EBD36B2789B5720008F860 /* SavedCollectionViewController.swift */,
 				F4A9FC7027946A4600447873 /* SearchImageCollectionViewController.swift */,
 			);
@@ -383,7 +380,6 @@
 				F467470A271D94020016058D /* DownlodClass.swift in Sources */,
 				F4DF460326ECDD6F0011EE99 /* APIError.swift in Sources */,
 				F432B0B129B782A100EFA023 /* FileReader.swift in Sources */,
-				F499518727131F500025CD37 /* DwonlodsOpstionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
